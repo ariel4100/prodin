@@ -24,7 +24,7 @@
                     </div>
                     <input type="hidden" name="producto_id" value="{{$producto->id}}">
                     <div class="right">
-                        <a href="{{action('ProductoController@index', $producto->id)}}" class="waves-effect waves-light btn">Cancelar</a>
+                        <a href="{{action('GaleriaController@index', $producto->id)}}" class="waves-effect waves-light btn">Cancelar</a>
                         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
                         </button>

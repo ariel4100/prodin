@@ -10,10 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('auth.login');
 });
+*/
+Route::get('/', 'SeccionHomeController@index');
+Route::get('/search', 'SeccionHomeController@buscador');
+
+Route::get('empresa', 'SeccionEmpresaController@index')->name('empresa.page');
+Route::get('productos', 'SeccionProductoController@index')->name('productos.page');
+Route::post('enviarpresupuesto', 'SeccionPresupuestoController@store')->name('enviarpresupuesto');
 
 Auth::routes();
 

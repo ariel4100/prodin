@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Galeria;
 use App\Producto;
 use Illuminate\Http\Request;
 
@@ -23,28 +24,36 @@ class GaleriaController extends Controller
     public function store(Request $request)
     {
         $producto_id = $request->producto_id;
-        $datos       = $request->all();
+
         $status      = 0;
+        if ($request->hasFile('file_image'))
+        {
+            $file = $request->file('file_image');
+            foreach($file as $img){
 
-        foreach($request->file('file_image') as $img){
-            $file_save = Helpers::saveImage($img, 'galeria_productos');
-            $file_save ? $datos['file_image'] = $file_save : false;
+                $imagename = uniqid().'_'.$img->getClientOriginalName();
+                if (!file_exists('images/productos/galeria'))
+                {
+                    mkdir('images/productos/galeria',0777,true);
+                }
 
-            $galeria              = new Galeria;
-            $galeria->producto_id = $producto_id;
-            $galeria->file_image  = $file_save;
-            $galeria->orden       = $request->orden;
+                $img->move('images/productos/galeria',$imagename);
 
-            if($galeria->save())
-                $status = 1;
-            else
-                return redirect('adm/productos/producto')->with('errors', "Ocurrió un error al intentar almacenar el registro" );
+                $galeria = new Galeria();
+                $galeria->producto_id = $producto_id;
+                $galeria->file_image = $imagename;
+                $galeria->orden = $request->orden;
+
+                if($galeria->save())
+                    $status = 1;
+                else
+                    return redirect('adm/productos/producto')->with('errors', "Ocurrió un error al intentar almacenar el registro" );
+            }
         }
-
         if($status==1)
-            return redirect('adm/productos/producto')->with('alert', "Registro almacenado exitósamente" );
+            return redirect()->back()->with('alert', "Registro almacenado exitósamente" );
         else
-            return redirect('adm/productos/producto')->with('errors', "Ocurrió un error al intentar almacenar el registro" );
+            return redirect()->with('errors', "Ocurrió un error al intentar almacenar el registro" );
     }
 
 
