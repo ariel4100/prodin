@@ -13,32 +13,33 @@
 					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/home/*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="material-icons">home</i>Home</a>
 						<div class="collapsible-body" {{ (\Request::is('adm/home/*'))?"style=display:block;":"" }}>
 							<ul>
-								<li><a href=""><i class="material-icons">navigate_next</i>Información</a></li>
+								<li><a href="{{ route('home.info') }}"><i class="material-icons">navigate_next</i>Información</a></li>
 								<li><a href=""><i class="material-icons">navigate_next</i>Productos Destacados</a></li>
-								<li><a href=""><i class="material-icons">navigate_next</i>Crear Sliders</a></li>
-								<li><a href=""><i class="material-icons">navigate_next</i>Ver Sliders</a></li>
+								<li><a href="{{ action('SliderController@create', ['seccion' => 'home']) }}"><i class="material-icons">navigate_next</i>Crear Sliders</a></li>
+								<li><a href="{{ action('SliderController@index', ['seccion' => 'home']) }}"><i class="material-icons">navigate_next</i>Ver Sliders</a></li>
 							</ul>							
 						</div>
 					</li>
 				</ul>
-			 	<ul class="collapsible collapsible-accordion">
-					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/productos*'))?"seccion-activa":"" }}" tabindex="0" ><i class="material-icons">shopping_cart</i>Productos</a>
-						<div class="collapsible-body"  {{ (\Request::is('adm/productos*'))?"style=display:block;":"" }}>
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/empresa*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="material-icons">business</i>Empresa</a>
+						<div class="collapsible-body"  {{ (\Request::is('adm/empresa*'))?"style=display:block;":"" }}>
 							<ul>
-								<li><a href=" " ><i class="material-icons">navigate_next</i>Crear Producto</a></li>
-								<li><a href=" " ><i class="material-icons">navigate_next</i>Ver Productos</a></li>
-								<li><a href=" " ><i class="material-icons">navigate_next</i>Crear Familias</a></li>
-								<li><a href=" " ><i class="material-icons">navigate_next</i>Ver Familias</a></li>
+								<li><a href="{{ route('empresa') }}"><i class="material-icons">navigate_next</i>Datos de la Empresa</a></li>
+								<li><a href="{{ action('SliderController@create', ['seccion' => 'empresa']) }}"><i class="material-icons">navigate_next</i>Crear Sliders</a></li>
+								<li><a href="{{ action('SliderController@index', ['seccion' => 'empresa']) }}"><i class="material-icons">navigate_next</i>Ver Sliders</a></li>
 							</ul>
 						</div>
 					</li>
 				</ul>
-				<ul class="collapsible collapsible-accordion">
-					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/ofertas*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="fas fa-percent"></i> Ofertas</a>
-						<div class="collapsible-body"  {{ (\Request::is('adm/ofertas*'))?"style=display:block;":"" }}>
+			 	<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/producto*'))?"seccion-activa":"" }}" tabindex="0" ><i class="material-icons">shopping_cart</i>Productos</a>
+						<div class="collapsible-body"  {{ (\Request::is('adm/producto*'))?"style=display:block;":"" }}>
 							<ul>
-								<li><a href=" "><i class="material-icons">navigate_next</i>Crear Ofertas</a></li>
-								<li><a href=" "><i class="material-icons">navigate_next</i>Ver Ofertas</a></li>
+								<li><a href="{{ route('productos.create') }}" ><i class="material-icons">navigate_next</i>Crear Producto</a></li>
+								<li><a href="{{ route('productos.index') }}" ><i class="material-icons">navigate_next</i>Ver Productos</a></li>
+								<li><a href="{{ route('categorias.create') }}" ><i class="material-icons">navigate_next</i>Crear Familias</a></li>
+								<li><a href="{{ route('categorias.index') }}" ><i class="material-icons">navigate_next</i>Ver Familias</a></li>
 							</ul>
 						</div>
 					</li>
@@ -54,17 +55,15 @@
 					</li>
 				</ul>
 				<ul class="collapsible collapsible-accordion">
-					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/empresa*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="material-icons">business</i>Quiénes Somos</a>
-						<div class="collapsible-body"  {{ (\Request::is('adm/empresa*'))?"style=display:block;":"" }}>
+					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/ofertas*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="fas fa-percent"></i> Ofertas</a>
+						<div class="collapsible-body"  {{ (\Request::is('adm/ofertas*'))?"style=display:block;":"" }}>
 							<ul>
-								<li><a href=" "><i class="material-icons">navigate_next</i>Datos de la Empresa</a></li>
-								<li><a href=" "><i class="material-icons">navigate_next</i>Crear Sliders</a></li>
-								<li><a href=" "><i class="material-icons">navigate_next</i>Ver Sliders</a></li>
+								<li><a href=" "><i class="material-icons">navigate_next</i>Crear Ofertas</a></li>
+								<li><a href=" "><i class="material-icons">navigate_next</i>Ver Ofertas</a></li>
 							</ul>
 						</div>
 					</li>
 				</ul>
-
 
 					<ul class="collapsible collapsible-accordion">
 						<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/usuarios/*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="material-icons">people</i>Usuarios</a>

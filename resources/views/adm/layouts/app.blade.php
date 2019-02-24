@@ -18,16 +18,16 @@
 <body>
     <div id="app">
         @include('adm.partials.navbar')
-        <div class="row">
-            <div class="col s3">
+
+
                 @include('adm.partials.sidebar')
-            </div>
-            <main class="col s9">
+
+            <main class=" ">
 
                     @yield('content')
 
             </main>
-        </div>
+
 
     </div>
 
@@ -36,6 +36,9 @@
     <script>
 
         $(document).ready(function(){
+            //M.AutoInit();
+            $('select').formSelect();
+
             $('.collapsible').collapsible();
             $('.sidenav').sidenav();
             $('.dropdown-trigger').dropdown({
