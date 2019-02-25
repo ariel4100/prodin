@@ -20,7 +20,7 @@
                     </tr>
                     <tr>
                         <td><b>Descripcion</b></td>
-                        <td>{{ $empresa->descripcion }}</td>
+                        <td>{!! $empresa->descripcion !!}</td>
                     </tr>
                     <tr>
                         <td colspan="2">

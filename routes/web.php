@@ -20,8 +20,11 @@ Route::get('/search', 'SeccionHomeController@buscador');
 
 Route::get('empresa', 'SeccionEmpresaController@index')->name('empresa.page');
 Route::get('productos', 'SeccionProductoController@index')->name('productos.page');
+Route::get('productos/listar/{id}', 'SeccionProductoController@listar')->name('listar.page');
+Route::get('productos/show/{id}', 'SeccionProductoController@show')->name('show.page');
 Route::post('enviarpresupuesto', 'SeccionPresupuestoController@store')->name('enviarpresupuesto');
-
+Route::get('/servicios', 'SeccionServicioController@index')->name('servicios.page');
+Route::get('/contactos', 'SeccionContactoController@index')->name('contacto.page');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
@@ -63,6 +66,19 @@ Route::prefix('adm')->group(function (){
         });
     });
 
+
+
+    Route::resource('servicio', 'ServicioController')->except(['show']);
+    Route::get('delete/{id}', 'ServicioController@eliminar');
+
+
+
+
+    // Admin Marcas
+    Route::prefix('marcas/')->group(function () {
+        Route::resource('marca', 'MarcaController')->except(['show']);
+        Route::get('delete/{id}', 'MarcaController@eliminar');
+    });
     //Ruta para la gestión de sliders
     Route::get('{seccion}/slider/', 'SliderController@index');
     Route::get('{seccion}/slider/crear/', 'SliderController@create');

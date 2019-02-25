@@ -12,40 +12,19 @@
         <!--/.Indicators-->
         <!--Slides-->
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <div class="view">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
-                    <div class="mask rgba-black-light"></div>
-                </div>
-                <div class="carousel-caption" style="right: 50%; left: 5%; ">
-                    <div class="">
-                        <h3 class="h3-responsive">Light mask</h3>
-                        <p>First text</p>
+            @foreach ($sliders as $s)
+                <div class="carousel-item active">
+                    <div class="view">
+                        <img class="d-block w-100" src="{{ asset('images/sliders/'. $s->file_image) }}" alt="First slide">
+                        <div class="mask "></div>
+                    </div>
+                    <div class="carousel-caption" style="   right: 40%; left: 40%; bottom: 100px;">
+                        <div class="" style="background-color: #2DC5EE; ">
+                            <h3 class="h3-responsive">Variedad <br> de Valvulas</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <!--Mask color-->
-                <div class="view">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
-                    <div class="mask rgba-black-strong"></div>
-                </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Strong mask</h3>
-                    <p>Secondary text</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <!--Mask color-->
-                <div class="view">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" alt="Third slide">
-                    <div class="mask rgba-black-slight"></div>
-                </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Slight mask</h3>
-                    <p>Third text</p>
-                </div>
-            </div>
+            @endforeach
         </div>
         <!--/.Slides-->
         <!--Controls-->
@@ -63,13 +42,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6   mt-5">
-            <h2>Empresa</h2>
+            <h2>{{ $empresa->titulo1 }}</h2>
             <p class="lead">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur delectus enim fugit omnis quam sint? Aliquid asperiores cum debitis dolor eaque facere facilis iusto labore magni neque nostrum, quis tenetur.
+                {!! $empresa->descripcion !!}
             </p>
         </div>
-        <div class="col-md-6   mt-5">
-
+        <div class="col-md-6 mt-5">
+            <img src="{{ asset('images/empresa/'.$empresa->file_image) }}" alt="img" class="img-fluid">
         </div>
     </div>
 </div>

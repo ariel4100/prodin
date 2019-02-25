@@ -99,17 +99,12 @@
 
                         </div>
                         <div class="row">
-
-                            <div class="input-field col s12">
-
-                                <i class="material-icons prefix">keyboard_arrow_right</i>
-
-                                <input id="icon_prefix" type="text" class="validate" name="descripcion" >
-
-                                <label for="icon_prefix">Descripcion</label>
-
+                            <div class="col s12">
+                                <h6 for="textarea1">Descripcion</h6>
                             </div>
-
+                            <div class="input-field col s12">
+                                <textarea  name="descripcion" class="validate">  </textarea>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s4">
@@ -162,3 +157,14 @@
         </div>
     </div>
 @endsection
+@section('script')
+    <script>
+        CKEDITOR.replace('descripcion');
+
+        CKEDITOR.config.height = '150px';
+
+        CKEDITOR.config.width = '100%';
+
+
+    </script>
+@stop

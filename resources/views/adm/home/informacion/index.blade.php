@@ -45,9 +45,6 @@
                 @else
                     <tr>
                         <td  >No existen registros</td>
-                        <td class="right">
-                            <a href="{{ action('HomeController@editInformacion', $informacion->id)}} " class="btn-floating btn-large waves-effect waves-light orange right"><i class="fas fa-pencil-alt"></i></a>
-                        </td>
                     </tr>
                 @endif
                 </tbody>

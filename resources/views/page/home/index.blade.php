@@ -12,38 +12,20 @@
         <!--/.Indicators-->
         <!--Slides-->
         <div class="carousel-inner" role="listbox">
+            @foreach($sliders as $s)
             <div class="carousel-item active">
-                <div class="view">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
-                    <div class="mask rgba-black-light"></div>
+                <div class="view" style="background-color: white;">
+                    <img class="d-block w-100" style="background-position: center; background-size: cover" src="{{ asset('images/sliders/'. $s->file_image) }}" alt="First slide">
+                    <div class="mask"></div>
                 </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Light mask</h3>
-                    <p>First text</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <!--Mask color-->
-                <div class="view">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
-                    <div class="mask rgba-black-strong"></div>
-                </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Strong mask</h3>
-                    <p>Secondary text</p>
+                <div class="carousel-caption bg-info" style="left: 0%; right: 70%; bottom: 100px;">
+                    <h3 class="h3-responsive">
+                        CILINDROS <br> NEUMATICOS E IDRAULICOS
+                    </h3>
+
                 </div>
             </div>
-            <div class="carousel-item">
-                <!--Mask color-->
-                <div class="view">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" alt="Third slide">
-                    <div class="mask rgba-black-slight"></div>
-                </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Slight mask</h3>
-                    <p>Third text</p>
-                </div>
-            </div>
+            @endforeach
         </div>
         <!--/.Slides-->
         <!--Controls-->
@@ -59,15 +41,17 @@
     </div>
     <!--/.Carousel Wrapper-->
 <div class="container-fluid">
-    <div class="row justify-content-center" style="background-color: #0D47A1">
-        <div class="col-md-8 text-white mt-4" >
-         <h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores beatae consectetur eos error explicabo fugiat hic inventore laudantium libero, magni nam nihil nisi nobis officiis provident tempora ullam, veniam veritatis!</h6>
+    <div class="row justify-content-center" style="background-color: #094984; font-family: 'Open Sans'">
+        <div class="col-md-6 text-white my-5">
+            @if ($informacion)
+                <h6>{{ $informacion->titulo1 }}</h6>
+            @endif
         </div>
     </div>
 </div>
 
     <div class="container-fluid">
-        <div class="row justify-content-center" style="background-color: grey">
+        <div class="row justify-content-center" style="background-color: grey;">
             <div class="col-md-8 text-white text-center mt-4" >
                 <h3>CONOZCA LO QUE TENEMOS PARA OFRECERLE</h3>
                 <form action="" class="form-row justify-content-center">

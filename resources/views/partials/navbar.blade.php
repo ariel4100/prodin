@@ -26,7 +26,7 @@
                     <a class="nav-link" href="{{ route('productos.page') }}">PRODUCTOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">SERVICIOS</a>
+                    <a class="nav-link" href="{{ route('servicios.page') }}">SERVICIOS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">SOLICITUD DE PRESUPUESTO</a>

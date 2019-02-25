@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Categoria;
+use App\Galeria;
+use App\Producto;
 use Illuminate\Http\Request;
 
 class SeccionProductoController extends Controller
@@ -14,27 +16,17 @@ class SeccionProductoController extends Controller
         return view('page.productos.index', compact('familias', 'seccion'));
     }
 
-    public function listar($id, $padre){
-        $pathItem  = 'images/familias/';
-        $items     = Familia::where('parent_id', $id)->get();
-        $productos = Producto::where('familia_id', $id)->get();
-        /*  $tipo      = 'familia';
-          if($productos->count() == '0'){
-              $items    = Producto::where('familia_id', $id)->get();
-              $pathItem = 'images/productos/';
-              $tipo     = 'producto';
-          }*/
-        $familia = Familia::find($id);
+    public function listar($id){
+        $familias = Categoria::orderBy('orden')->get();
+        $productos = Producto::where('categoria_id', $id)->get();
 
-        $familia_padre = Familia::find($padre);
-
-        return view('page.productos.listar', compact('pathItem', 'familia', 'items', 'isFamilia', 'familia_padre', 'tipo', 'productos'));
+        return view('page.productos.listar', compact('familias','productos'));
     }
 
-    public function show($id, $padre){
-        $producto      = Producto::find($id);
-        $familia_padre = Familia::find($padre);
-
-        return view('page.productos.show', compact('producto', 'familia_padre'));
+    public function show($id){
+        $producto = Producto::find($id);
+        $familias = Categoria::orderBy('orden')->get();
+        $galeria = Galeria::where('producto_id',$id)->orderBy('orden')->get();
+        return view('page.productos.show', compact('producto','familias','galeria'));
     }
 }

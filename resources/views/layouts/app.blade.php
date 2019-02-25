@@ -8,7 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <style>
+        body{
+            font-family: 'Open Sans', sans-serif;
+            font-family: 'Quicksand', sans-serif;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Quicksand:500" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
     <!-- Bootstrap core CSS -->

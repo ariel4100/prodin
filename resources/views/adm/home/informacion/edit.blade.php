@@ -68,7 +68,7 @@
 
                             <i class="material-icons prefix">keyboard_arrow_right</i>
 
-                            <input id="icon_prefix" type="text" class="validate" name="titulo_1"  value="{{$informacion->titulo1}}" >
+                            <input id="icon_prefix" type="text" class="validate" name="titulo1"  value="{{$informacion->titulo1}}" >
 
                             <label for="icon_prefix">Título 1</label>
 
@@ -87,8 +87,6 @@
                         </div>
 
                         <div class="input-field col s12">
-
-
 
                             <textarea id="titulo2" name="titulo2"> {{ $informacion->titulo2 }} </textarea>
 
@@ -113,3 +111,14 @@
     </div>
 </div>
 @endsection
+@section('script')
+    <script>
+        CKEDITOR.replace('titulo1');
+
+        CKEDITOR.config.height = '150px';
+
+        CKEDITOR.config.width = '100%';
+
+
+    </script>
+@stop

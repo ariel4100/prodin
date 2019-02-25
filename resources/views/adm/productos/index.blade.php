@@ -21,7 +21,7 @@
                     <tr>
                         <td style="width: 150px;"><img src="{{ asset('images/productos/'.$p->file_image) }}"></td>
                         <td >{{ $p->nombre }}</td>
-                        <td>{{ $p->categoria_id }}</td>
+                        <td>{{ $p->categoria->nombre }}</td>
                         <td>{{ $p->orden }}</td>
                         <td>
                             <a href="{{ action('ProductoController@edit', $p->id)}}" class="btn-floating btn waves-effect waves-light orange"><i style="font-size: 15px" class="fas fa-pencil-alt"></i></a>

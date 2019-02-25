@@ -48,14 +48,33 @@
 					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/servicios*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="fas fa-hand-holding-heart"></i> Servicios</a>
 						<div class="collapsible-body"  {{ (\Request::is('adm/servicios*'))?"style=display:block;":"" }}>
 							<ul>
-								<li><a href="  "><i class="material-icons">navigate_next</i>Crear Servicios</a></li>
-								<li><a href=" "><i class="material-icons">navigate_next</i>Ver Servicios</a></li>
+								<li><a href="{{ route('servicio.create') }}"><i class="material-icons">navigate_next</i>Crear Servicios</a></li>
+								<li><a href="{{ route('servicio.index') }}"><i class="material-icons">navigate_next</i>Ver Servicios</a></li>
 							</ul>
 						</div>
 					</li>
 				</ul>
 				<ul class="collapsible collapsible-accordion">
-					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/ofertas*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="fas fa-percent"></i> Ofertas</a>
+					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/contactos*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="material-icons">phone</i> Contactos</a>
+						<div class="collapsible-body"  {{ (\Request::is('adm/contactos*'))?"style=display:block;":"" }}>
+							<ul>
+								<li><a href=""><i class="material-icons">navigate_next</i>Datos de Contacto</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/marcas*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="fab fa-bandcamp"></i>Marcas</a>
+						<div class="collapsible-body"  {{ (\Request::is('adm/marcas*'))?"style=display:block;":"" }}>
+							<ul>
+								<li><a href="{{ action('MarcaController@create') }}"><i class="material-icons">navigate_next</i>Crear Marcas</a></li>
+								<li><a href="{{ action('MarcaController@index') }}"><i class="material-icons">navigate_next</i>Ver Marcas</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/ofertas*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="fas fa-percent"></i> Metadatos</a>
 						<div class="collapsible-body"  {{ (\Request::is('adm/ofertas*'))?"style=display:block;":"" }}>
 							<ul>
 								<li><a href=" "><i class="material-icons">navigate_next</i>Crear Ofertas</a></li>
@@ -64,7 +83,6 @@
 						</div>
 					</li>
 				</ul>
-
 					<ul class="collapsible collapsible-accordion">
 						<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/usuarios/*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="material-icons">people</i>Usuarios</a>
 							<div class="collapsible-body"  {{ (\Request::is('adm/usuarios/*'))?"style=display:block;":"" }}>

@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link href="{{ asset('css/admin/app.css') }}" rel="stylesheet">
     <link href="{{ asset('icons/fontawesome/css/all.css') }}" rel="stylesheet">
+    @yield('style')
 </head>
 <body>
     <div id="app">
@@ -33,6 +34,8 @@
 
     <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{asset('js/materialize.min.js')}}"></script>
+    <script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
+    @yield('script')
     <script>
 
         $(document).ready(function(){

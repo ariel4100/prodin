@@ -23,19 +23,31 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $producto  = new Producto();
-        if ($request->hasFile('file_plano'))
+        if ($request->hasFile('file_image'))
         {
-            $file = $request->file('file_plano');
+            $file = $request->file('file_image');
             $imagename = uniqid().'_'.$file->getClientOriginalName();
-            if (!file_exists('images/productos/plano'))
+            if (!file_exists('images/productos'))
             {
-                mkdir('images/productos/plano',0777,true);
+                mkdir('images/productos',0777,true);
             }
-            $file->move('images/productos/plano',$imagename);
+            $file->move('images/productos',$imagename);
         }else{
             $imagename = "no-image.jpg";
         }
 
+        if ($request->hasFile('file_plano'))
+        {
+            $file = $request->file('file_plano');
+            $imagenameplano = uniqid().'_'.$file->getClientOriginalName();
+            if (!file_exists('images/productos/plano'))
+            {
+                mkdir('images/productos/plano',0777,true);
+            }
+            $file->move('images/productos/plano',$imagenameplano);
+        }else{
+            $imagenameplano = "no-image.jpg";
+        }
 
         /*if($request->file('file_ficha')!=null){
 
@@ -51,6 +63,8 @@ class ProductoController extends Controller
         $producto->link_mercadolibre = $request->link_mercadolibre;
         $producto->categoria_id = $request->categoria_id;
         $producto->orden = $request->orden;
+        $producto->file_image = $imagename;
+        $producto->file_plano = $imagenameplano;
         if($producto->save())
             return redirect()->route('productos.index')->with('alert', "Registro almacenado exitósamente" );
         else
@@ -63,12 +77,58 @@ class ProductoController extends Controller
         $producto    = Producto::find($id);
         //$familias    = Familia::where('nivel', '<=', '1')->orderBy('orden')->get();
 
-        $familias = Familia::all();
+        $familias = Categoria::all();
         return view('adm.productos.edit', compact('familias', 'producto'));
     }
-    public function update()
+    public function update(Request $request, $id)
     {
+        $producto  = Producto::find($id);
+        if ($request->hasFile('file_image'))
+        {
+            $file = $request->file('file_image');
+            $imagename = uniqid().'_'.$file->getClientOriginalName();
+            if (!file_exists('images/productos'))
+            {
+                mkdir('images/productos',0777,true);
+            }
+            $file->move('images/productos',$imagename);
+        }else{
+            $imagename = $producto->file_image;
+        }
 
+        if ($request->hasFile('file_plano'))
+        {
+            $file = $request->file('file_plano');
+            $imagenameplano = uniqid().'_'.$file->getClientOriginalName();
+            if (!file_exists('images/productos/plano'))
+            {
+                mkdir('images/productos/plano',0777,true);
+            }
+            $file->move('images/productos/plano',$imagenameplano);
+        }else{
+            $imagenameplano = $producto->file_plano;
+        }
+
+        /*if($request->file('file_ficha')!=null){
+
+            $ruta                 = 'productos';
+            $path                 = Storage::putFileAs($ruta, $request->file('file_ficha'),'producto'.'.'.$request->file('file_ficha')->getClientOriginalExtension());
+            $rutaNombre           = 'producto'.'.'.$request->file('file_ficha')->getClientOriginalExtension();
+            $producto->file_ficha = $rutaNombre;
+
+        }*/
+
+        $producto->nombre = $request->nombre;
+        $producto->descripcion = $request->descripcion;
+        $producto->link_mercadolibre = $request->link_mercadolibre;
+        $producto->categoria_id = $request->categoria_id;
+        $producto->orden = $request->orden;
+        $producto->file_image = $imagename;
+        $producto->file_plano = $imagenameplano;
+        if($producto->save())
+            return redirect()->route('productos.index')->with('alert', "Registro almacenado exitósamente" );
+        else
+            return redirect()->back()->with('errors', "Ocurrió un error al intentar almacenar el registro" );
     }
     public function destroy($id)
     {
