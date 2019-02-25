@@ -2,7 +2,7 @@
 	<ul id="slide-out" class="sidenav sidenav-fixed">
 		<div class="logo-admin">
 			<a href="{{ url('adm/home') }}">
-				<img class="responsive-img" src='{{ asset("images/logos/") }}' alt="">
+				<img class="responsive-img" src='{{ asset("images/logo_negro.png") }}' alt="">
 			</a>
 		</div>
 

@@ -17,9 +17,11 @@
                     <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
                     <div class="mask rgba-black-light"></div>
                 </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Light mask</h3>
-                    <p>First text</p>
+                <div class="carousel-caption" style="right: 50%; left: 5%; ">
+                    <div class="">
+                        <h3 class="h3-responsive">Light mask</h3>
+                        <p>First text</p>
+                    </div>
                 </div>
             </div>
             <div class="carousel-item">

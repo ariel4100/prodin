@@ -1,8 +1,10 @@
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #094984">
     <div class="container">
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="/">
+            <img src="{{ asset('images/logo.png') }}" alt="">
+        </a>
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
