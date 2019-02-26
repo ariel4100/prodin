@@ -2,22 +2,18 @@
 
 @section('content')
 
-<div class="container my-5">
+
+<div class="container" style="margin-top: 4rem">
     <div class="row" >
         @foreach($familias as $f)
-        <div class="col-md-3">
-            <a href="{{ route('listar.page', $f->id) }}">
-                <div class="card">
-                    <div class="view overlay">
-                        <img src="{{ asset('images/categoria/'. $f->file_image) }}" class="img-fluid " alt="smaple image">
-                        <div class="mask flex-center rgba-black-strong">
-                            <p class="white-text">+</p>
-                        </div>
+            <a href="{{ route('listar,page') }}">
+                <div class="col s3">
+                    <div class="">
+                        <img src= "{{ asset('images/categoria/'. $f->file_image) }}" class="responsive-img"   alt="smaple image">
                     </div>
+                    <p class=" center">{{ $f->nombre }}</p>
                 </div>
-                <p class="text-center">{{ $f->nombre }}</p>
             </a>
-        </div>
         @endforeach
     </div>
 </div>
