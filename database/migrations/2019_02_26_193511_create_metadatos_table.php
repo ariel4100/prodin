@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactosTable extends Migration
+class CreateMetadatosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateContactosTable extends Migration
      */
     public function up()
     {
-        Schema::create('contactos', function (Blueprint $table) {
+        Schema::create('metadatos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('seccion');
+            $table->string('keyword')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateContactosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contactos');
+        Schema::dropIfExists('metadatos');
     }
 }

@@ -6,9 +6,9 @@
         </a>
         <div class="container">
             <ul class="right  hide-on-med-and-down" style="margin: -60px;  height: 10px;">
-                <li><p  >45687979</p></li>
-                <li><p>ariel@gmail.com</p></li>
-                <li><p>ariel@gmail.com</p></li>
+                <li><p>15 6528 - 0542</p></li>
+                <li><p>011 2062 - 1307</p></li>
+                <li><p>prodin@prodinautamocion.com.ar</p></li>
             </ul>
         </div>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -17,8 +17,8 @@
                 <li><a href="{{ route('empresa.page') }}">EMPRESA</a></li>
                 <li><a href="{{ route('productos.page') }}">PRODUCTOS</a></li>
                 <li><a href="{{ route('servicios.page') }}">SERVICIOS</a></li>
-                <li><a href="{{ route('empresa.page') }}">SOLICITUD DE PRESUPUESTO</a></li>
-                <li><a href="{{ route('empresa.page') }}">CONTACTO</a></li>
+                <li><a href="{{ route('presupuesto.page') }}">SOLICITUD DE PRESUPUESTO</a></li>
+                <li><a href="{{ route('contacto.index') }}">CONTACTO</a></li>
                 <li><a href="{{ route('empresa.page') }}"><i class="material-icons">search</i></a></li>
             </ul>
         </div>

@@ -24,6 +24,6 @@ class Producto extends Model
 
     public function destacado()
     {
-        return $this->hasOne('App\Destacado');
+        return $this->hasOne('App\ProductoDestacado');
     }
 }

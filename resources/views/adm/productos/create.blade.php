@@ -107,12 +107,29 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col s12">
+                                <h6 for="textarea1">Caracteriticas</h6>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea  name="caracteristicas" class="validate">  </textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <h6 for="textarea1">Especificaciones</h6>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea  name="especificaciones" class="validate">  </textarea>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="input-field col s4">
                                 <select class="materialSelect" id="familia" name="categoria_id">
                                     @foreach ($familias as $f )
                                         <option value="{{ $f->id }}" >{{ ucwords($f->nombre) }} </option>
                                     @endforeach
                                 </select>
+                                <label for="icon_prefix">Familia</label>
                             </div>
                         </div>
                         <div class="row">
@@ -165,6 +182,17 @@
 
         CKEDITOR.config.width = '100%';
 
+        CKEDITOR.replace('especificaciones');
+
+        CKEDITOR.config.height = '150px';
+
+        CKEDITOR.config.width = '100%';
+
+        CKEDITOR.replace('caracteristicas');
+
+        CKEDITOR.config.height = '150px';
+
+        CKEDITOR.config.width = '100%';
 
     </script>
 @stop

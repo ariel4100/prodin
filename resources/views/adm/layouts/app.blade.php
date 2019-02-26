@@ -34,7 +34,7 @@
 
     <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{asset('js/materialize.min.js')}}"></script>
-    <script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
     @yield('script')
     <script>
 

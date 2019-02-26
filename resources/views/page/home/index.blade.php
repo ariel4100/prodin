@@ -2,22 +2,13 @@
 
 @section('content')
     <div class="carousel carousel-slider center">
-        <div class="carousel-item red white-text" href="#one!">
-            <h2>First Panel</h2>
-            <p class="white-text">This is your first panel</p>
-        </div>
-        <div class="carousel-item amber white-text" href="#two!">
-            <h2>Second Panel</h2>
-            <p class="white-text">This is your second panel</p>
-        </div>
-        <div class="carousel-item green white-text" href="#three!">
-            <h2>Third Panel</h2>
-            <p class="white-text">This is your third panel</p>
-        </div>
-        <div class="carousel-item blue white-text" href="#four!">
-            <h2>Fourth Panel</h2>
-            <p class="white-text">This is your fourth panel</p>
-        </div>
+        @foreach($sliders as $s)
+            <div class="carousel-item   white-text" href="#one!" style="background-image: url({{ asset('images/sliders/'.$s->file_image) }})">
+                <div class="left" style="padding: 0px 20px 10px 20px; background-color: #2DC5EE;">
+                    <h2>CILINDROS NEUMATICOS E HIDRAULICOS</h2>
+                </div>
+            </div>
+        @endforeach
     </div>
 
     <div class="row" style="background-color: #094984; height: 100px; font-family: 'Open Sans'">

@@ -60,8 +60,11 @@ class ProductoController extends Controller
 
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
+        $producto->caracteristicas = $request->caracteristicas;
+        $producto->especificaciones = $request->especificaciones;
         $producto->link_mercadolibre = $request->link_mercadolibre;
         $producto->categoria_id = $request->categoria_id;
+        $producto->subcategoria_id = $request->subcategoria_id;
         $producto->orden = $request->orden;
         $producto->file_image = $imagename;
         $producto->file_plano = $imagenameplano;
@@ -74,8 +77,7 @@ class ProductoController extends Controller
     }
     public function edit($id)
     {
-        $producto    = Producto::find($id);
-        //$familias    = Familia::where('nivel', '<=', '1')->orderBy('orden')->get();
+        $producto = Producto::find($id);
 
         $familias = Categoria::all();
         return view('adm.productos.edit', compact('familias', 'producto'));
@@ -120,8 +122,11 @@ class ProductoController extends Controller
 
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
+        $producto->caracteristicas = $request->caracteristicas;
+        $producto->especificaciones = $request->especificaciones;
         $producto->link_mercadolibre = $request->link_mercadolibre;
         $producto->categoria_id = $request->categoria_id;
+        $producto->subcategoria_id = $request->subcategoria_id;
         $producto->orden = $request->orden;
         $producto->file_image = $imagename;
         $producto->file_plano = $imagenameplano;

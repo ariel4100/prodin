@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubcategoriasTable extends Migration
+class CreateContactosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateSubcategoriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('subcategorias', function (Blueprint $table) {
+        Schema::create('contactos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre')->nullable();
-            $table->string('descripcion')->nullable();
-            $table->string('file_image')->default('no-image.jpg')->nullable();
-            $table->string('orden')->nullable();
+            $table->enum('tipo', ['telefono_1', 'telefono_2', 'telefono_3', 'direccion', 'email', 'mapa']);
+            $table->text('descripcion');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateSubcategoriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subcategorias');
+        Schema::dropIfExists('contactos');
     }
 }

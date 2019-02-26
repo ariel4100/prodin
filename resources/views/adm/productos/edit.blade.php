@@ -106,6 +106,22 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col s12">
+                            <h6 for="textarea1">Caracteriticas</h6>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea  name="caracteristicas" class="validate">{!! $producto->caracteristicas !!} </textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <h6 for="textarea1">Especificaciones</h6>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea  name="especificaciones" class="validate">{!! $producto->especificaciones !!} </textarea>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="input-field col s4">
                             <select class="materialSelect" id="familia" name="categoria_id">
                                 @foreach ($familias as $f )
@@ -164,6 +180,17 @@
 
         CKEDITOR.config.width = '100%';
 
+        CKEDITOR.replace('especificaciones');
+
+        CKEDITOR.config.height = '150px';
+
+        CKEDITOR.config.width = '100%';
+
+        CKEDITOR.replace('caracteristicas');
+
+        CKEDITOR.config.height = '150px';
+
+        CKEDITOR.config.width = '100%';
 
     </script>
 @stop

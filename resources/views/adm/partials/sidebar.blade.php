@@ -14,7 +14,8 @@
 						<div class="collapsible-body" {{ (\Request::is('adm/home/*'))?"style=display:block;":"" }}>
 							<ul>
 								<li><a href="{{ route('home.info') }}"><i class="material-icons">navigate_next</i>Información</a></li>
-								<li><a href=""><i class="material-icons">navigate_next</i>Productos Destacados</a></li>
+								<li><a href="{{ route('destacado.productos') }}"><i class="material-icons">navigate_next</i>Productos Destacados</a></li>
+								<li><a href="{{ route('destacado.categoria') }}"><i class="material-icons">navigate_next</i>Categorias Destacados</a></li>
 								<li><a href="{{ action('SliderController@create', ['seccion' => 'home']) }}"><i class="material-icons">navigate_next</i>Crear Sliders</a></li>
 								<li><a href="{{ action('SliderController@index', ['seccion' => 'home']) }}"><i class="material-icons">navigate_next</i>Ver Sliders</a></li>
 							</ul>							
@@ -58,7 +59,7 @@
 					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/contactos*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="material-icons">phone</i> Contactos</a>
 						<div class="collapsible-body"  {{ (\Request::is('adm/contactos*'))?"style=display:block;":"" }}>
 							<ul>
-								<li><a href=""><i class="material-icons">navigate_next</i>Datos de Contacto</a></li>
+								<li><a href="{{ action('ContactoController@contacto') }}"><i class="material-icons">navigate_next</i>Datos de Contacto</a></li>
 							</ul>
 						</div>
 					</li>
@@ -74,11 +75,10 @@
 					</li>
 				</ul>
 				<ul class="collapsible collapsible-accordion">
-					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/ofertas*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="fas fa-percent"></i> Metadatos</a>
-						<div class="collapsible-body"  {{ (\Request::is('adm/ofertas*'))?"style=display:block;":"" }}>
+					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/metadatos*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="material-icons">data_usage</i>Metadatos</a>
+						<div class="collapsible-body"  {{ (\Request::is('adm/metadatos*'))?"style=display:block;":"" }}>
 							<ul>
-								<li><a href=" "><i class="material-icons">navigate_next</i>Crear Ofertas</a></li>
-								<li><a href=" "><i class="material-icons">navigate_next</i>Ver Ofertas</a></li>
+								<li><a href="{{ action('MetadatoController@index') }}"><i class="material-icons">navigate_next</i>Ver Metadatos</a></li>
 							</ul>
 						</div>
 					</li>
@@ -87,8 +87,8 @@
 						<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/usuarios/*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="material-icons">people</i>Usuarios</a>
 							<div class="collapsible-body"  {{ (\Request::is('adm/usuarios/*'))?"style=display:block;":"" }}>
 								<ul>
-									<li><a href=" "><i class="material-icons">navigate_next</i>Crear Usuario</a></li>
-									<li><a href=" "><i class="material-icons">navigate_next</i>Editar Usuarios</a></li>
+									<li><a href="{{ route('user.create') }}"><i class="material-icons">navigate_next</i>Crear Usuario</a></li>
+									<li><a href="{{ route('user.index') }}"><i class="material-icons">navigate_next</i>Editar Usuarios</a></li>
 								</ul>
 							</div>
 						</li>

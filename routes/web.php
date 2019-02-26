@@ -18,13 +18,14 @@ Route::get('/', function () {
 Route::get('/', 'SeccionHomeController@index');
 Route::get('/search', 'SeccionHomeController@buscador');
 
-Route::get('empresa', 'SeccionEmpresaController@index')->name('empresa.page');
-Route::get('productos', 'SeccionProductoController@index')->name('productos.page');
-Route::get('productos/listar/{id}', 'SeccionProductoController@listar')->name('listar.page');
-Route::get('productos/show/{id}', 'SeccionProductoController@show')->name('show.page');
+Route::get('/empresa', 'SeccionEmpresaController@index')->name('empresa.page');
+Route::get('/productos', 'SeccionProductoController@index')->name('productos.page');
+Route::get('/productos/listar/{id}', 'SeccionProductoController@listar')->name('listar.page');
+Route::get('/productos/show/{id}', 'SeccionProductoController@show')->name('show.page');
+Route::get('/presupuesto', 'SeccionPresupuestoController@index')->name('presupuesto.page');
 Route::post('enviarpresupuesto', 'SeccionPresupuestoController@store')->name('enviarpresupuesto');
 Route::get('/servicios', 'SeccionServicioController@index')->name('servicios.page');
-Route::get('/contactos', 'SeccionContactoController@index')->name('contacto.page');
+Route::resource('/contacto', 'SeccionContactoController');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
@@ -35,6 +36,18 @@ Route::prefix('adm')->group(function (){
     Route::get('/home/informacion/{id}/edit', 'HomeController@editInformacion')->name('home.info.edit');
     Route::put('home/informacion/{id}', 'HomeController@update');
     //Route::get('/home/slider', 'SliderController@index')->name('slider.index');
+    // Admin Destacados
+    Route::get('home/destacados/productos', 'ProductoDestacadoController@index')->name('destacado.productos');
+    Route::get('home/destacados/productos/crear', 'ProductoDestacadoController@create')->name('destacado.productos.create');
+    Route::post('home/destacados/productos/store', 'ProductoDestacadoController@store')->name('destacado.productos.store');
+    Route::get('home/destacados/productos/{id}/edit', 'ProductoDestacadoController@edit')->name('destacado.productos.edit');
+
+
+    Route::get('home/destacados/categorias', 'CategoriaDestacadoController@index')->name('destacado.categoria');
+    Route::get('home/destacados/categorias/crear', 'CategoriaDestacadoController@create')->name('destacado.categoria.create');
+    Route::post('home/destacados/categoria/store', 'CategoriaDestacadoController@store')->name('destacado.categoria.store');
+    Route::post('home/destacados/categorias/{id}/edit', 'CategoriaDestacadoController@edit')->name('destacado.categoria.edit');
+
 
     //Ruta para la seccion Empresa
     Route::get('/empresa', 'EmpresaController@index')->name('empresa');
@@ -72,7 +85,12 @@ Route::prefix('adm')->group(function (){
     Route::get('delete/{id}', 'ServicioController@eliminar');
 
 
-
+    //Ruta para la gestión de contacto y redes
+    Route::prefix('datos')->group(function () {
+        Route::get('contacto', 'ContactoController@contacto');
+        Route::get('contacto/edit/{id}', 'ContactoController@editContacto');
+        Route::put('update/{id}', 'ContactoController@update');
+    });
 
     // Admin Marcas
     Route::prefix('marcas/')->group(function () {
@@ -86,5 +104,15 @@ Route::prefix('adm')->group(function (){
     Route::get('{seccion}/slider/edit/{id}', 'SliderController@edit');
     Route::put('{seccion}/slider/update/{id}', 'SliderController@update');
     Route::get('slider/delete/{id}', 'SliderController@eliminar');
+
+    //Ruta para la gestión de metadatos
+    Route::resource('metadatos', 'MetadatoController');
+
+    // Admin Usuarios
+    Route::prefix('usuarios/')->group(function () {
+        Route::resource('user', 'UserController')->except(['show']);
+        Route::get('delete/{id}', 'UserController@eliminar');
+    });
+
 
 });

@@ -42,7 +42,7 @@ class ServicioController extends Controller
 
 
         if($servicio->save())
-            return redirect()->back()->with('alert', "Registro almacenado exitósamente" );
+            return redirect()->route('servicio.index')->with('alert', "Registro almacenado exitósamente" );
         else
             return redirect()->back()->with('errors', "Ocurrió un error al intentar almacenado el registro" );
     }
@@ -57,14 +57,26 @@ class ServicioController extends Controller
 
     public function update(Request $request, $id)
     {
-        $servicio      = Servicio::find($id);
-        $datos     = $request->all();
-        $file_save = Helpers::saveImage($request->file('file_image'), 'servicios');
-        $file_save ? $datos['file_image'] = $file_save : false;
-        $servicio->fill($datos);
-
+        $servicio = Servicio::find($id);
+        if ($request->hasFile('file_image'))
+        {
+            $file = $request->file('file_image');
+            $imagename = uniqid().'_'.$file->getClientOriginalName();
+            if (!file_exists('images/servicios'))
+            {
+                mkdir('images/servicios',0777,true);
+            }
+            $file->move('images/servicios',$imagename);
+        }else{
+            $imagename = $servicio->file_image;
+        }
+        $servicio->nombre = $request->nombre;
+        $servicio->descripcion_breve = $request->descripcion_breve;
+        $servicio->descripcion = $request->descripcion;
+        $servicio->orden = $request->orden;
+        $servicio->file_image = $imagename;
         if($servicio->save())
-            return redirect('adm/servicios/servicio')->with('alert', "Registro actualizado exitósamente" );
+            return redirect()->route('servicio.index')->with('alert', "Registro actualizado exitósamente" );
         else
             return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
     }

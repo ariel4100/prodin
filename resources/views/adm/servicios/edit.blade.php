@@ -66,3 +66,14 @@
     </div>
 </div>
 @endsection
+@section('script')
+    <script>
+        CKEDITOR.replace('descripcion');
+
+        CKEDITOR.config.height = '150px';
+
+        CKEDITOR.config.width = '100%';
+
+
+    </script>
+@stop
