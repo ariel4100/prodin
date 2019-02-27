@@ -122,12 +122,28 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s4">
+                        <div class="input-field col s6">
                             <select class="materialSelect" id="familia" name="categoria_id">
                                 @foreach ($familias as $f )
                                     <option value="{{ $f->id }}" @if($f->id == $producto->categoria_id) selected @endif >{{ ucwords($f->nombre) }} </option>
                                 @endforeach
                             </select>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <select multiple name="relacionados[]">
+                                <option value="" disabled >Elige productos relacionados</option>
+                                @foreach($productos as $p)
+                                    @if($relacionados)
+                                        @foreach($relacionados as $r)
+                                            <option value="{{ $p->id }}" @if($p->id == $r->producto_id) selected @endif  >{{ $p->nombre }}</option>
+                                        @endforeach
+                                    @else
+                                        <option value="{{ $p->id }}"   >{{ $p->nombre }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            <label>Productos Relacionados</label>
                         </div>
                     </div>
                     <div class="row">

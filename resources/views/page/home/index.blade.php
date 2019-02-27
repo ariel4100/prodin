@@ -18,7 +18,40 @@
             @endif
         </div>
     </div>
-
+    @if($destacados2)
+        <div class="container">
+            <h4 class="center" style="color: #2CC5ED; margin-bottom: 3rem; margin-top: 3rem">CATEGORIAS DESTACADAS</h4>
+            <div class="row">
+                @foreach($destacados2 as $f)
+                        <div class="col s3 center">
+                            <a href="{{ route('listar.page', $f->categoria->id) }}">
+                                <div class="">
+                                    <img src= "{{ asset('images/categoria/'. $f->categoria->file_image) }}" class="responsive-img"   alt="smaple image">
+                                </div>
+                                <p class=" center">{{ $f->categoria->nombre }}</p>
+                            </a>
+                        </div>
+                @endforeach
+            </div>
+        </div>
+    @endif
+    @if($destacados)
+        <div class="container">
+            <h4 class="center" style="color: #2CC5ED; margin-bottom: 3rem; margin-top: 3rem">PRODUCTOS DESTACADAS</h4>
+            <div class="row">
+                @foreach($destacados as $f)
+                        <div class="col s3 center">
+                            <a href="{{ route('listar.page', $f->producto->id) }}">
+                            <div class="">
+                                <img src= "{{ asset('images/productos/'. $f->producto->file_image) }}" class="responsive-img"   alt="smaple image">
+                            </div>
+                            <p class=" center">{{ $f->producto->nombre }}</p>
+                            </a>
+                        </div>
+                @endforeach
+            </div>
+        </div>
+    @endif
     <div class="row" style="background-color: #D6D6D6; height: 100%; font-family: 'Open Sans'">
         <div class="col s6 offset-s3">
             <h5>CONOZCA LO QUE TENEMOS PARA OFRECERLE</h5>

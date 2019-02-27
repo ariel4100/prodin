@@ -16,6 +16,7 @@
 								<li><a href="{{ route('home.info') }}"><i class="material-icons">navigate_next</i>Información</a></li>
 								<li><a href="{{ route('destacado.productos') }}"><i class="material-icons">navigate_next</i>Productos Destacados</a></li>
 								<li><a href="{{ route('destacado.categoria') }}"><i class="material-icons">navigate_next</i>Categorias Destacados</a></li>
+								<li><a href="{{ action('EnlaceController@index') }}"><i class="material-icons">navigate_next</i>Ver Enlaces</a></li>
 								<li><a href="{{ action('SliderController@create', ['seccion' => 'home']) }}"><i class="material-icons">navigate_next</i>Crear Sliders</a></li>
 								<li><a href="{{ action('SliderController@index', ['seccion' => 'home']) }}"><i class="material-icons">navigate_next</i>Ver Sliders</a></li>
 							</ul>							
@@ -70,6 +71,24 @@
 							<ul>
 								<li><a href="{{ action('MarcaController@create') }}"><i class="material-icons">navigate_next</i>Crear Marcas</a></li>
 								<li><a href="{{ action('MarcaController@index') }}"><i class="material-icons">navigate_next</i>Ver Marcas</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/logos*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="fab fa-delicious"></i>Logos</a>
+						<div class="collapsible-body"  {{ (\Request::is('adm/logos*'))?"style=display:block;":"" }}>
+							<ul>
+								<li><a href="{{ action('LogosController@index') }}"><i class="material-icons">navigate_next</i>Ver Logos</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+				<ul class="collapsible collapsible-accordion">
+					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/general*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="fas fa-sliders-h"></i>General</a>
+						<div class="collapsible-body"  {{ (\Request::is('adm/general*'))?"style=display:block;":"" }}>
+							<ul>
+								<li><a href="{{ action('CondicionController@edit', '1') }}"><i class="material-icons">navigate_next</i>Términos y Condiciones</a></li>
 							</ul>
 						</div>
 					</li>

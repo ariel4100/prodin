@@ -123,7 +123,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s4">
+                            <div class="input-field col s6">
                                 <select class="materialSelect" id="familia" name="categoria_id">
                                     @foreach ($familias as $f )
                                         <option value="{{ $f->id }}" >{{ ucwords($f->nombre) }} </option>
@@ -131,7 +131,17 @@
                                 </select>
                                 <label for="icon_prefix">Familia</label>
                             </div>
+                            <div class="input-field col s6">
+                                <select multiple="multiple" name="relacionados[]">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    @foreach($relacionados as $r)
+                                        <option value="{{ $r->id }}">{{ $r->nombre }}</option>
+                                    @endforeach
+                                </select>
+                                <label>Productos Relacionados</label>
+                            </div>
                         </div>
+
                         <div class="row">
 
                             <div class="input-field col s6">

@@ -105,6 +105,19 @@ Route::prefix('adm')->group(function (){
     Route::put('{seccion}/slider/update/{id}', 'SliderController@update');
     Route::get('slider/delete/{id}', 'SliderController@eliminar');
 
+    // Admin Marcas
+    Route::prefix('home/')->group(function () {
+        Route::get('enlace', 'EnlaceController@index')->name('enlace');
+        Route::get('enlace/editar/{id}', 'EnlaceController@edit')->name('enlace.edit');
+        Route::put('enlace/{id}/edit', 'EnlaceController@update')->name('enlace.update');
+
+        Route::get('delete/{id}', 'EnlaceController@eliminar');
+    });
+
+    //Ruta para la gestión de logos
+    Route::resource('logos', 'LogosController');
+    //Ruta para la gestión de términos y condiciones
+    Route::resource('general/condiciones', 'CondicionController');
     //Ruta para la gestión de metadatos
     Route::resource('metadatos', 'MetadatoController');
 

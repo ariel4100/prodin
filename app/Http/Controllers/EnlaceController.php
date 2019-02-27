@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Marca;
+use App\Enlace;
 use Illuminate\Http\Request;
 
-class MarcaController extends Controller
+class EnlaceController extends Controller
 {
     public function index()
     {
-        $marcas = Marca::orderBy('orden')->get();
+        $enlaces = Enlace::orderBy('orden')->get();
 
-        return view('adm.marcas.index', compact('marcas'));
+        return view('adm.home.enlaces.index', compact('enlaces'));
     }
 
     public function create()
     {
-        return view('adm.marcas.create', compact('marca'));
+        return view('adm.home.enlaces.create', compact('marca'));
     }
 
     public function store(Request $request)
@@ -25,19 +25,20 @@ class MarcaController extends Controller
         {
             $file = $request->file('file_image');
             $imagename = uniqid().'_'.$file->getClientOriginalName();
-            if (!file_exists('images/marcas'))
+            if (!file_exists('images/enlace'))
             {
-                mkdir('images/marcas',0777,true);
+                mkdir('images/enlace',0777,true);
             }
-            $file->move('images/marcas',$imagename);
+            $file->move('images/enlace',$imagename);
         }else{
             $imagename = "no-image.jpg";
         }
-        $marca = new Marca;
-        $marca->nombre = $request->nombre;
-        $marca->file_image = $imagename;
-        $marca->orden = $request->orden;
-        if($marca->save())
+        $enlace = new Enlace();
+        $enlace->nombre = $request->nombre;
+        $enlace->file_image = $imagename;
+        $enlace->orden = $request->orden;
+        $enlace->url = $request->url;
+        if($enlace->save())
             return redirect()->back()->with('alert', "Registro almacenado exitósamente" );
         else
             return redirect()->back()->with('errors', "Ocurrió un error al intentar almacenado el registro" );
@@ -51,9 +52,9 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
-        $marca = Marca::find($id);
+        $enlace = Enlace::find($id);
 
-        return view('adm.marcas.edit', compact('marca'));
+        return view('adm.home.enlaces.edit', compact('enlace'));
     }
 
     /**
@@ -65,24 +66,25 @@ class MarcaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $marca = Marca::find($id);
+        $enlace = Enlace::find($id);
         if ($request->hasFile('file_image'))
         {
             $file = $request->file('file_image');
             $imagename = uniqid().'_'.$file->getClientOriginalName();
-            if (!file_exists('images/marcas'))
+            if (!file_exists('images/enlace'))
             {
-                mkdir('images/marcas',0777,true);
+                mkdir('images/enlace',0777,true);
             }
-            $file->move('images/marcas',$imagename);
+            $file->move('images/enlace',$imagename);
         }else{
-            $imagename = $marca->file_image;
+            $imagename = $enlace->file_image;
         }
-        $marca->nombre = $request->nombre;
-        $marca->file_image = $imagename;
-        $marca->orden = $request->orden;
-        if($marca->save())
-            return redirect('adm/marcas/marca')->with('alert', "Registro actualizado exitósamente" );
+        $enlace->nombre = $request->nombre;
+        $enlace->file_image = $imagename;
+        $enlace->orden = $request->orden;
+        $enlace->url = $request->url;
+        if($enlace->save())
+            return redirect()->back()->with('alert', "Registro actualizado exitósamente" );
         else
             return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
     }
@@ -95,9 +97,9 @@ class MarcaController extends Controller
      */
     public function eliminar($id)
     {
-        $marca = Marca::find($id);
+        $enlace = Enlace::find($id);
 
-        if($marca->delete())
+        if($enlace->delete())
             return redirect()->back()->with('alert', "Registro eliminado exitósamente" );
         else
             return redirect()->back()->with('errors', "Ocurrió un error al intentar eliminar el registro" );
