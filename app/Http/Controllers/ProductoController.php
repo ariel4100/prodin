@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categoria;
 use App\Producto;
+use App\ProductoRelacionados;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -17,8 +18,8 @@ class ProductoController extends Controller
     public function create()
     {
         $familias = Categoria::orderBy('orden')->get();
-
-        return view('adm.productos.create', compact('familias'));
+        $relacionados = Producto::orderBy('orden')->get();
+        return view('adm.productos.create', compact('familias','relacionados'));
     }
     public function store(Request $request)
     {
@@ -68,19 +69,31 @@ class ProductoController extends Controller
         $producto->orden = $request->orden;
         $producto->file_image = $imagename;
         $producto->file_plano = $imagenameplano;
-        if($producto->save())
-            return redirect()->route('productos.index')->with('alert', "Registro almacenado exitósamente" );
-        else
-            return redirect()->back()->with('errors', "Ocurrió un error al intentar almacenar el registro" );
+        $producto->save();
 
+        $p = Producto::all('id');
+        $idUltimo = $p->last();
+        if ($request->get('relacionados')) {
+            $relacionados = $request->relacionados;
+            foreach ($relacionados as $item) {
+                //var_dump($item);
+                ProductoRelacionados::create([
+                    'producto_id' => $item,
+                    'producto' => $idUltimo->id,
+                ]);
+            }
+        }
+
+        return redirect()->route('productos.index')->with('alert', "Registro almacenado exitósamente" );
 
     }
     public function edit($id)
     {
         $producto = Producto::find($id);
-
         $familias = Categoria::all();
-        return view('adm.productos.edit', compact('familias', 'producto'));
+        $productos = Producto::where('id', '!=' , $id)->orderBy('orden')->get();
+        $relacionados = ProductoRelacionados::where('producto',$id)->orderBy('orden')->get();
+        return view('adm.productos.edit', compact('familias', 'producto','productos','relacionados'));
     }
     public function update(Request $request, $id)
     {
@@ -130,10 +143,19 @@ class ProductoController extends Controller
         $producto->orden = $request->orden;
         $producto->file_image = $imagename;
         $producto->file_plano = $imagenameplano;
-        if($producto->save())
-            return redirect()->route('productos.index')->with('alert', "Registro almacenado exitósamente" );
-        else
-            return redirect()->back()->with('errors', "Ocurrió un error al intentar almacenar el registro" );
+        $producto->save();
+
+        if ($request->get('relacionados')) {
+            $relacionados = $request->get('relacionados');
+            foreach ($relacionados as $item) {
+                ProductoRelacionados::updateOrCreate([
+                    'producto_id' => $item,
+                    'producto' => $id,
+                ]);
+            }
+        }
+
+        return redirect()->route('productos.index')->with('alert', "Registro almacenado exitósamente" );
     }
     public function destroy($id)
     {

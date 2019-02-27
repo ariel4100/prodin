@@ -10,6 +10,6 @@
 			</ul>
 		</div>
 	</nav>
-	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: one;">
+	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 		{{ csrf_field() }}
 	</form>

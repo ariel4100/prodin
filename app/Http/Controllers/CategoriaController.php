@@ -49,7 +49,7 @@ class CategoriaController extends Controller
     {
         $familia = Categoria::find($id);
 
-        return view('adm.productos.familias.edit', compact('familia', 'nivel', 'familia_padre'));
+        return view('adm.productos.categoria.edit', compact('familia', 'nivel', 'familia_padre'));
     }
 
     public function update(Request $request, $id)

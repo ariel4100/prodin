@@ -4,6 +4,14 @@
 <div class="container" id="container-fluid">
     <div class="row">
         <div class="col s12">
+            <nav>
+                <div class="nav-wrapper grey">
+                    <div class="col s12">
+                        <a href="{{ route('home') }}" class="breadcrumb">Home</a>
+                        <a href="{{ route('categorias.index') }}" class="breadcrumb">Familia</a>
+                    </div>
+                </div>
+            </nav>
             <h5>Familias</h5>
             <div class="divider"></div>
             <table class="index-table-logos responsive-table ">
@@ -22,7 +30,7 @@
                         <td >{{ $f->nombre }}</td>
                         <td>{{ $f->orden }}</td>
                         <td>
-                            <a href=" {{ route('categorias.destroy', $f->id)}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="fas fa-pencil-alt"></i></a>
+                            <a href=" {{ route('categorias.edit', $f->id)}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="fas fa-pencil-alt"></i></a>
                             <form action="{{ route('categorias.destroy', $f->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')

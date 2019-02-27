@@ -65,12 +65,22 @@ class MarcaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $marca      = Marca::find($id);
-        $datos     = $request->all();
-        $file_save = Helpers::saveImage($request->file('file_image'), 'marcas');
-        $file_save ? $datos['file_image'] = $file_save : false;
-        $marca->fill($datos);
-
+        $marca = Marca::find($id);
+        if ($request->hasFile('file_image'))
+        {
+            $file = $request->file('file_image');
+            $imagename = uniqid().'_'.$file->getClientOriginalName();
+            if (!file_exists('images/marcas'))
+            {
+                mkdir('images/marcas',0777,true);
+            }
+            $file->move('images/marcas',$imagename);
+        }else{
+            $imagename = $marca->file_image;
+        }
+        $marca->nombre = $request->nombre;
+        $marca->file_image = $imagename;
+        $marca->orden = $request->orden;
         if($marca->save())
             return redirect('adm/marcas/marca')->with('alert', "Registro actualizado exitósamente" );
         else

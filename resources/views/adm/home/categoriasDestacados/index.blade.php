@@ -8,7 +8,7 @@
                 <div class="nav-wrapper grey">
                     <div class="col s12">
                         <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Productos Destacados</a>
+                        <a href="#!" class="breadcrumb">Categoria Destacados</a>
                     </div>
                 </div>
             </nav>

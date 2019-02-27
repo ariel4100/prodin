@@ -4,7 +4,14 @@
 <div class="container" id="container-fluid">
     <div class="row">
         <div class="col s12">
-
+            <nav>
+                <div class="nav-wrapper grey">
+                    <div class="col s12">
+                        <a href="{{ route('home') }}" class="breadcrumb">Home</a>
+                        <a href="{{ route('servicio.index') }}" class="breadcrumb">Servicios</a>
+                    </div>
+                </div>
+            </nav>
             <h5>Servicios</h5>
             <div class="divider"></div>
             <table class="index-table responsive-table ">

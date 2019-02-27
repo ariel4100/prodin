@@ -1,13 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-5 my-5">
             <div class="card p-3">
-                <h5 class="card-header info-color white-text text-center py-4">
-                    <strong>INGRESAR</strong>
-                </h5>
+                <img src="{{ asset('images/logo_negro.png') }}" class="img-fluid px-5 py-4" alt="">
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -34,7 +32,7 @@
                                 @endif
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary">Primary</button>
+                        <button type="submit" class="btn btn-block btn-primary">Ingresar</button>
                         <!--
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">

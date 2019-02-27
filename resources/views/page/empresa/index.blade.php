@@ -14,13 +14,13 @@
     </div>
 <div class="container" style="margin-top: 4rem">
     <div class="row">
-        <div class="col s6">
+        <div class="col l6 s12">
             <h5  >{{ $empresa->titulo1 }}</h5>
             <p class="">
                 {!! $empresa->descripcion !!}
             </p>
         </div>
-        <div class="col s6">
+        <div class="col l6 s12">
             <img src="{{ asset('images/empresa/'.$empresa->file_image) }}" alt="img" class="responsive-img">
         </div>
     </div>

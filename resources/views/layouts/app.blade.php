@@ -18,6 +18,12 @@
     <link rel="stylesheet" href="{{ asset('css/page/servicios.css') }}">
     <link rel="stylesheet" href="{{ asset('css/page/presupuesto.css') }}">
     <link rel="stylesheet" href="{{ asset('css/page/contacto.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <style>
+        .footer-logo{
+            margin-top: 80px;
+        }
+    </style>
     @yield('style')
 </head>
 <body>
@@ -26,6 +32,7 @@
         <main class=" ">
             @yield('content')
         </main>
+        @include('partials.footer')
     </div>
 
     <!-- Compiled and minified JavaScript -->
@@ -34,16 +41,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Librería para la animación  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <!-- Librería para el recaptcha -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script>
         $(document).ready(function(){
+            $('.collapsible').collapsible();
             $('.sidenav').sidenav();
+
+            $('.carousel.carousel-slider').carousel({
+                fullWidth: true,
+                indicators: true
+            });
+
+            $('.slick-marcas').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                infinite: true,
+                speed: 300,
+                arrows: true,
+                centerMode: true,
+                variableWidth: true
+            });
         });
-        $('.carousel.carousel-slider').carousel({
-            fullWidth: true,
-            indicators: true
-        });
+
+
     </script>
     @yield('script')
 </body>

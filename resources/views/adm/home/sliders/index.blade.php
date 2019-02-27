@@ -4,6 +4,14 @@
 <div class="container" id="container-fluid">
     <div class="row">
         <div class="col s12">
+            <nav>
+                <div class="nav-wrapper grey">
+                    <div class="col s12">
+                        <a href="#!" class="breadcrumb">Home</a>
+                        <a href="#!" class="breadcrumb">Slider</a>
+                    </div>
+                </div>
+            </nav>
             <h5>Sliders Home</h5>
             <div class="divider"></div>
             <table class="index-table responsive-table ">

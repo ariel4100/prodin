@@ -14,20 +14,25 @@
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <div class=" " style="width: 95%">
             <ul class="right hide-on-med-and-down">
-                <li><a href="{{ route('empresa.page') }}">EMPRESA</a></li>
+                <li><a href="{{ route('empresa.page') }}" class="seccion-active">EMPRESA</a></li>
                 <li><a href="{{ route('productos.page') }}">PRODUCTOS</a></li>
                 <li><a href="{{ route('servicios.page') }}">SERVICIOS</a></li>
                 <li><a href="{{ route('presupuesto.page') }}">SOLICITUD DE PRESUPUESTO</a></li>
                 <li><a href="{{ route('contacto.index') }}">CONTACTO</a></li>
-                <li><a href="{{ route('empresa.page') }}"><i class="material-icons">search</i></a></li>
+                <li>
+                    <a class="btn-floating btn-large waves-effect waves-light" style="background-color: #2DC5EE;width: 35px;height: 35px;">
+                        <i style="line-height:37px;" class="material-icons">search</i>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">Javascript</a></li>
-    <li><a href="mobile.html">Mobile</a></li>
+    <li><a href="{{ route('empresa.page') }}">EMPRESA</a></li>
+    <li><a href="{{ route('productos.page') }}">PRODUCTOS</a></li>
+    <li><a href="{{ route('servicios.page') }}">SERVICIOS</a></li>
+    <li><a href="{{ route('presupuesto.page') }}">SOLICITUD DE PRESUPUESTO</a></li>
+    <li><a href="{{ route('contacto.index') }}">CONTACTO</a></li>
 </ul>

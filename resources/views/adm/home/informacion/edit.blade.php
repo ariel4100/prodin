@@ -4,6 +4,14 @@
 <div class="container" id="container-fluid">
     <div class="row">
         <div class="col s12">
+            <nav>
+                <div class="nav-wrapper grey">
+                    <div class="col s12">
+                        <a href="#!" class="breadcrumb">Home</a>
+                        <a href="#!" class="breadcrumb">Editar Informacion</a>
+                    </div>
+                </div>
+            </nav>
             <h5>Editar Información en HOME</h5>
             <div class="divider"></div>
             <form method="POST"  enctype="multipart/form-data" action="{{action('HomeController@update', $informacion->id)}}" class="col s12 m8 offset-m2 xl10 offset-xl1">

@@ -1,13 +1,53 @@
 @extends('layouts.app')
 
+
+
+@section('style')
+	<style>
+		.collapsible {
+			border: none;
+			box-shadow: none;
+		}
+		.collapsible-header {
+		}
+		.collapsible-body {
+			padding: 8px;
+		}
+		a{
+			color: #747484;
+		}
+	</style>
+@stop
 @section('content')
-	<div class="container" style="margin-top: 4rem">
+	<div class="container" >
 		<div class="row">
+			<div class="breadcrumb-productos" style="padding: 3%">
+				<a href="{{ action('SeccionProductoController@index') }}">Productos</a> | <a href="{{ route('listar.page', $familia->id) }}">{{$familia->nombre}}</a> | <a href="{{ route('show.page', $producto->id) }}">{{$producto->nombre}}</a>
+			</div>
 			<div class="col s3">
-				<ul class="list-group list-group-flush">
+				<ul class="collapsible">
 					@foreach($familias as $f)
-						<li class="list-group-item">
-							{{ $f->nombre }}<i class="fas fa-angle-right"></i>
+						<li @if($f->id == $familia->id) class="active"  style="color: #2DC5EE;" @endif>
+							<div class="collapsible-header"
+								 style="display:flex; justify-content:space-between; align-items:center; padding:8px">
+								<a href="{{ route('listar.page', $f->id) }}" @if($f->id == $familia->id) style="color: #2DC5EE;" @endif class="graysillo">
+									{{ $f->nombre }}
+								</a>
+								<i class="material-icons">keyboard_arrow_right</i>
+							</div>
+							<div class="collapsible-body" style="padding:0">
+								@foreach($f->productos as $p)
+									<ul class="collapsible">
+										<li class="active">
+											<div class="collapsible-header">
+												<a href="" class="graysillo"
+												   @isset($familias) @if($f->id == $p->id) style="color: #2DC5EE;" @endif @endisset
+												>{{$p->nombre }}</a>
+											</div>
+										</li>
+									</ul>
+								@endforeach
+							</div>
 						</li>
 					@endforeach
 				</ul>
@@ -20,8 +60,7 @@
 							<a class="carousel-item" href="#one!"><img src="{{ asset('images/productos/'.$producto->file_image) }}"></a>
 							@if($producto->galerias->count() > 0)
 								@foreach($producto->galerias as $s)
-									<a class="carousel-item" href="#one!"><img src="{{ asset('images/galeria_productos/'.$s->file_image) }}"></a>
-
+									<a class="carousel-item" href="#one!"><img src="{{ asset('images/productos/galeria/'.$s->file_image) }}"></a>
 								@endforeach
 							@endif
 						</div>

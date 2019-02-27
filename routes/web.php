@@ -26,11 +26,16 @@ Route::get('/presupuesto', 'SeccionPresupuestoController@index')->name('presupue
 Route::post('enviarpresupuesto', 'SeccionPresupuestoController@store')->name('enviarpresupuesto');
 Route::get('/servicios', 'SeccionServicioController@index')->name('servicios.page');
 Route::resource('/contacto', 'SeccionContactoController');
-Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('adm')->group(function (){
+    Route::get('/', function () {
+        return view('auth.login');
+    });
+    Auth::routes();
+});
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware('auth')->prefix('adm')->group(function (){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/home/informacion', 'HomeController@indexInformacion')->name('home.info');
     Route::get('/home/informacion/{id}/edit', 'HomeController@editInformacion')->name('home.info.edit');
@@ -62,7 +67,6 @@ Route::prefix('adm')->group(function (){
     Route::prefix('producto')->group(function ()
     {
 
-
         //Ruta para la seccion Categoria
         Route::resource('/categorias', 'CategoriaController')->except([
             'show',
@@ -80,14 +84,12 @@ Route::prefix('adm')->group(function (){
     });
 
 
-
     Route::resource('servicio', 'ServicioController')->except(['show']);
     Route::get('delete/{id}', 'ServicioController@eliminar');
 
-
     //Ruta para la gestión de contacto y redes
     Route::prefix('datos')->group(function () {
-        Route::get('contacto', 'ContactoController@contacto');
+        Route::get('contacto', 'ContactoController@contacto')->name('contacto.index');
         Route::get('contacto/edit/{id}', 'ContactoController@editContacto');
         Route::put('update/{id}', 'ContactoController@update');
     });
@@ -105,6 +107,19 @@ Route::prefix('adm')->group(function (){
     Route::put('{seccion}/slider/update/{id}', 'SliderController@update');
     Route::get('slider/delete/{id}', 'SliderController@eliminar');
 
+    // Admin Marcas
+    Route::prefix('home/')->group(function () {
+        Route::get('enlace', 'EnlaceController@index')->name('enlace');
+        Route::get('enlace/editar/{id}', 'EnlaceController@edit')->name('enlace.edit');
+        Route::put('enlace/{id}/edit', 'EnlaceController@update')->name('enlace.update');
+
+        Route::get('delete/{id}', 'EnlaceController@eliminar');
+    });
+
+    //Ruta para la gestión de logos
+    Route::resource('logos', 'LogosController');
+    //Ruta para la gestión de términos y condiciones
+    Route::resource('general/condiciones', 'CondicionController');
     //Ruta para la gestión de metadatos
     Route::resource('metadatos', 'MetadatoController');
 
@@ -113,6 +128,5 @@ Route::prefix('adm')->group(function (){
         Route::resource('user', 'UserController')->except(['show']);
         Route::get('delete/{id}', 'UserController@eliminar');
     });
-
 
 });

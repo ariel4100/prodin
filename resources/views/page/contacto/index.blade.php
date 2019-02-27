@@ -7,7 +7,7 @@
 	<!-- Formulario  -->
 	<div class="container container-fluid">
 		<div class="row" >
-			<div class="col s4" style="margin-top: 5%">
+			<div class="col l3 s12" style="margin-top: 5%">
 				<div class="flex-column-center">
 					<img src="{{ asset('images/contacto/logo_direc.png') }} " class="responsive-img" alt="" >
 					@if($email)
@@ -29,7 +29,7 @@
 
 				</div>
 			</div>
-			<div class="col s8">
+			<div class="col l9 s12">
 
 				<form method="POST"  enctype="multipart/form-data" action="{{action('SeccionContactoController@store')}}" >
 					{{ csrf_field() }}
