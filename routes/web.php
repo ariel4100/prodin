@@ -38,7 +38,7 @@ Route::prefix('adm')->group(function (){
     });
     Auth::routes();
 });
-//Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::middleware('auth')->prefix('adm')->group(function (){
     Route::get('/home', 'HomeController@index')->name('home');

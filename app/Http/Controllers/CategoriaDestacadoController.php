@@ -47,7 +47,7 @@ class CategoriaDestacadoController extends Controller
         $destacado->orden       = $request->orden;
 
         if($destacado->save())
-            return redirect('adm/home/destacados')->with('alert', "Registro almacenado exitósamente" );
+            return redirect()->back()->with('alert', "Registro almacenado exitósamente" );
         else
             return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
     }

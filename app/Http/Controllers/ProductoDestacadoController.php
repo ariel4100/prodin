@@ -25,7 +25,7 @@ class ProductoDestacadoController extends Controller
         $destacado  = ProductoDestacado::find($id);
         $destacados = Producto::orderBy('orden')->get();
 
-        return view('adm.home.destacados.edit', compact('destacado', 'destacados'));
+        return view('adm.home.productosDestacados.edit', compact('destacado', 'destacados'));
     }
 
     public function store(Request $request)

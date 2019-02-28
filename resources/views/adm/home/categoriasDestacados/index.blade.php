@@ -31,7 +31,7 @@
                         <td>{{ $d->orden }}</td>
                         <td>
                             <a href=" {{ action('CategoriaDestacadoController@edit', $d->id)}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="material-icons">autorenew</i></a>
-                            <a href=" {{ action('CategoriaDestacadoController@create')}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="material-icons">add</i></a>
+                            <!--<a href=" {{ action('CategoriaDestacadoController@create')}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="material-icons">add</i></a>-->
                         </td>
                     </tr>
                 @empty
