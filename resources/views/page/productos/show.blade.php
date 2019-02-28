@@ -91,7 +91,7 @@
 						@if($producto->file_plano != null)
 							<div class="col s12 m12 l9">
 								<div class="row">
-									<p id="productos-show-familia" style="color: #25d366"> DETALLES</p>
+									<p id="productos-show-familia" style="color: #094984 !important;"> DETALLES</p>
 								</div>
 								<img src="{{ asset('images/productos/plano/'. $producto->file_plano) }}" class="" alt="">
 							</div>
