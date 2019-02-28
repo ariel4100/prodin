@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Categoria;
 use App\Galeria;
 use App\Producto;
+use App\ProductoRelacionados;
 use Illuminate\Http\Request;
 
 class SeccionProductoController extends Controller
@@ -28,6 +29,7 @@ class SeccionProductoController extends Controller
         $familia = Categoria::find($id);
         $familias = Categoria::orderBy('orden')->get();
         $galeria = Galeria::where('producto_id',$id)->orderBy('orden')->get();
-        return view('page.productos.show', compact('producto','familias','galeria','familia'));
+        $relacionados = ProductoRelacionados::where('producto',$id)->get();
+        return view('page.productos.show', compact('producto','familias','galeria','familia','relacionados'));
     }
 }

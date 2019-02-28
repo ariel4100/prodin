@@ -75,6 +75,7 @@
 						</div>
 					</li>
 				</ul>
+				<!--
 				<ul class="collapsible collapsible-accordion">
 					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/logos*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="fab fa-delicious"></i>Logos</a>
 						<div class="collapsible-body"  {{ (\Request::is('adm/logos*'))?"style=display:block;":"" }}>
@@ -83,7 +84,7 @@
 							</ul>
 						</div>
 					</li>
-				</ul>
+				</ul>-->
 				<ul class="collapsible collapsible-accordion">
 					<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/general*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="fas fa-sliders-h"></i>General</a>
 						<div class="collapsible-body"  {{ (\Request::is('adm/general*'))?"style=display:block;":"" }}>
@@ -102,6 +103,7 @@
 						</div>
 					</li>
 				</ul>
+				@if (Auth::user()->tipo_usuario == 'Administrador')
 					<ul class="collapsible collapsible-accordion">
 						<li class="bold"><a class="collapsible-header waves-effect waves-grey {{ (\Request::is('adm/usuarios/*'))?"seccion-activa":"" }}" tabindex="0"  ><i class="material-icons">people</i>Usuarios</a>
 							<div class="collapsible-body"  {{ (\Request::is('adm/usuarios/*'))?"style=display:block;":"" }}>
@@ -112,6 +114,7 @@
 							</div>
 						</li>
 					</ul>
+				@endif
 
 			</li>
 		</div>

@@ -82,7 +82,7 @@
     <div class="footer-copyright">
         <div class="container">
             © 2019
-            <a class="grey-text text-lighten-4 right" href="osole.es">BY ODSOLE</a>
+            <a class="grey-text text-lighten-4 right" href="osole.es">BY OSOLE</a>
         </div>
     </div>
 </footer>

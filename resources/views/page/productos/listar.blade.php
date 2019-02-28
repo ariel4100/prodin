@@ -61,7 +61,7 @@
 					<div class="row">
 						<div class="col s4 ">
 							<a href="{{ route('show.page', $p->id) }}">
-								<div class="hover" style="">
+								<div class="" style="">
 									<img src= "{{ asset('images/productos/'. $p->file_image) }}" class="responsive-img"   alt="smaple image">
 								</div>
 								<p class=" center">{{ $p->nombre }}</p>

@@ -48,7 +48,7 @@
 
                 <div class="row">
                     <div class="right">
-                        <a href="{{ action('SliderController@index', ['seccion' => 'empresa']) }}" class="waves-effect waves-light btn btn-color">Cancelar</a>
+                        <a href="{{ action('SliderController@index', ['seccion' => $seccion]) }}" class="waves-effect waves-light btn btn-color">Cancelar</a>
                         <button class="btn waves-effect waves-light btn-color" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
                         </button>
@@ -59,3 +59,14 @@
     </div>
 </div>
 @endsection
+@section('script')
+    <script>
+        CKEDITOR.replace('titulo');
+
+        CKEDITOR.config.height = '150px';
+
+        CKEDITOR.config.width = '100%';
+
+
+    </script>
+@stop

@@ -1,23 +1,27 @@
 
 
-nav{
-    height: 100px;
-    background-color: #094984;
+.header-top{
+    min-height: 35px !important;
+    background: #FFFFFF;
+    height: 25% !important;
+    border-top: 5px solid #232E8B;
 }
 
-nav ul li{
-    padding: 30px 20px 0px 0px;
-
+.header-top-ul{
+    margin-right: -20%;
 }
 
-.container{
-    width: 80% !important;
+.header-top-ul li, .header-top-ul li a{
+    color: #505050;
+    font-size: 13px;
+    padding-right: 5px;
 }
+
 
 #header{
-    background: #094984;
+    background: #FFFFFF;
     height: 150px;
-    font-family: 'open sans';
+    font-family: 'Lato Bold';
     margin-bottom: 3px;
 }
 
@@ -44,17 +48,14 @@ nav ul li{
 
 .header-secciones li a{
     font-size: 15px;
-    font-family: 'open sans';
+    font-family: 'Lato Bold';
     padding: 10px 15px !important;
     font-weight: 900;
-    letter-spacing: 1px;
+    letter-spacing: 1;
     line-height: 120%;
-    color: #CACAD9;
+    color: #595959;
 }
 
-.header-secciones li {
-    padding: 1px 1px !important;
-}
 
 .collapsible-body a{
     font-size: 14px;
@@ -90,14 +91,9 @@ nav ul a:hover{
     }
 }
 
-#seccion-active  ul a:hover{
-    color: #ffffff;
-    border-bottom: 2px solid #2DC5EE;
-    margin-bottom: -2px;
-}
-nav  ul a .seccion-active{
-    color: #ffffff;
-    border-bottom: 2px solid #2DC5EE;
+#seccion-active,#header ul a:hover{
+    background: transparent;
+    border-bottom: 2px solid #009688;
     margin-bottom: -2px;
 }
 
@@ -118,6 +114,13 @@ nav  ul a .seccion-active{
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+
+nav {
+    color: #fff;
+    background-color: #094984;
+    width: 100%;
+
 }
 
 #buscador:focus:not([readoy]){

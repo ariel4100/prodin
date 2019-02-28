@@ -86,7 +86,7 @@
 
                                 <input class="file-path validate" type="text">
 
-                                <span class="helper-text" data-error="wrong" data-success="right">Tamaño recomendado: 1400x334</span>
+                                <span class="helper-text" data-error="wrong" data-success="right">Subir PDF</span>
 
                             </div>
 
@@ -139,21 +139,7 @@
                             </select>
                         </div>
 
-                        <div class="input-field col s6">
-                            <select multiple name="relacionados[]">
-                                <option value="" disabled >Elige productos relacionados</option>
-                                @foreach($productos as $p)
-                                    @if($relacionados)
-                                        @foreach($relacionados as $r)
-                                            <option value="{{ $p->id }}" @if($p->id == $r->producto_id) selected @endif  >{{ $p->nombre }}</option>
-                                        @endforeach
-                                    @else
-                                        <option value="{{ $p->id }}"   >{{ $p->nombre }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                            <label>Productos Relacionados</label>
-                        </div>
+
                     </div>
                     <div class="row">
 

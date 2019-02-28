@@ -15,18 +15,20 @@
     </style>
 @stop
 @section('content')
-    <div class="carousel carousel-slider center">
+    <div class="carousel carousel-slider  ">
         @foreach($sliders as $s)
             <div class="carousel-item   white-text" href="#one!" style="background-image: url({{ asset('images/sliders/'.$s->file_image) }})">
-                <div class="left" style="padding: 0px 20px 10px 20px; background-color: #2DC5EE; margin-top: 150px;" >
-                    <h2>CILINDROS NEUMATICOS E HIDRAULICOS</h2>
-                </div>
+                @if ($s->titulo)
+                    <div class="left" style="padding: 0px 50px 10px 50px; background-color: #2DC5EE; margin-top: 100px;" >
+                        {!! $s->titulo !!}
+                    </div>
+                @endif
             </div>
         @endforeach
     </div>
 
-    <div class="row " style="background-color: #094984; height: 100px; font-family: 'Open Sans'">
-        <div class="col s6 offset-s4">
+    <div class="row " style="background-color: #094984; padding:  3rem; font-family: 'Open Sans'">
+        <div class="col s6 offset-s3 center" style="color: white">
             @if ($informacion)
                 <h6>{{ $informacion->titulo1 }}</h6>
             @endif
@@ -42,7 +44,7 @@
                                 <div class="">
                                     <img src= "{{ asset('images/categoria/'. $f->categoria->file_image) }}" class="responsive-img"   alt="smaple image">
                                 </div>
-                                <p class=" center">{{ $f->categoria->nombre }}</p>
+                                <p class=" center" style="color: #2CC5ED;">{{ $f->categoria->nombre }}</p>
                             </a>
                         </div>
                 @endforeach
@@ -59,7 +61,7 @@
                             <div class="">
                                 <img src= "{{ asset('images/productos/'. $f->producto->file_image) }}" class="responsive-img"   alt="smaple image">
                             </div>
-                            <p class=" center">{{ $f->producto->nombre }}</p>
+                            <p class=" center" style="color: #2CC5ED;">{{ $f->producto->nombre }}</p>
                             </a>
                         </div>
                 @endforeach
@@ -68,25 +70,25 @@
     @endif
     <div class="row center" style="background-color: #D6D6D6; height: 100%; font-family: 'Open Sans'; padding: 3rem">
         <div class="col s6 offset-s3">
-            <h5>CONOZCA LO QUE TENEMOS PARA OFRECERLE</h5>
+            <h5 style="color: #2CC5ED">CONOZCA LO QUE TENEMOS PARA OFRECERLE</h5>
             <div class="row">
-                <form class="col s12">
+                <form  method="get"  class="col s12" action="{{ action('SeccionHomeController@buscador') }}">
                     <div class="input-field">
                         <i class="material-icons prefix">search</i>
-                        <input placeholder="Buscar producto..." id="first_name" type="text" class="validate">
+                        <input placeholder="Buscar producto..." id="first_name" type="text" name="nombre" class="validate">
                     </div>
                 </form>
             </div>
             @foreach($enlaces as $e)
                 <div class="col s6 center " style="margin-top: 3rem">
                     <img src="{{ asset('images/enlace/'.$e->file_image) }}" class="responsive-img ion-active" alt="">
-                    <h6 class="center">{{ $e->nombre }}</h6>
+                    <h6 class="center" style="color: #2CC5ED">{{ $e->nombre }}</h6>
                 </div>
             @endforeach
         </div>
     </div>
 
-    <div style="background: #EEEEEE; padding: 50px 0px">
+    <div style="   padding: 50px 0px">
         <div class="container hide-on-med-and-down ">
             <div class="slick-marcas">
                 @foreach ($marcas as $m)

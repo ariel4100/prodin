@@ -6,6 +6,7 @@ use App\CategoriaDestacado;
 use App\Enlace;
 use App\Informacion;
 use App\Marca;
+use App\Producto;
 use App\ProductoDestacado;
 use App\Slider;
 use Illuminate\Http\Request;
@@ -32,5 +33,13 @@ class SeccionHomeController extends Controller
         $enlaces = Enlace::all();
         $marcas = Marca::all();
         return view('page.home.index', compact('sliders', 'informacion', 'destacados','destacados2','enlaces','marcas'));
+    }
+
+    public function buscador(Request $request)
+    {
+        $busqueda  = $request->nombre;
+        $resultado = Producto::where('nombre', 'like', '%'.$busqueda.'%')->get();
+
+        return view('page.home.busqueda', ['resultado' => $resultado]);
     }
 }

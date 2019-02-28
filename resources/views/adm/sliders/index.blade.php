@@ -23,7 +23,7 @@
                         <td>{!! $s->titulo !!}</td>
                         <td>{{ $s->orden }}</td>
                         <td>
-                            <a href=" {{ action('SliderController@edit', ['id' => $s->id, 'seccion' => 'empresa'])}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="fas fa-pencil-alt"></i></a>
+                            <a href=" {{ action('SliderController@edit', ['id' => $s->id, 'seccion' => $seccion])}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="fas fa-pencil-alt"></i></a>
                             <a onclick="return confirm('¿Realmente desea eliminar este registro?')"  href=" {{ action('SliderController@eliminar', ['id' => $s->id])}} " class="btn-floating btn-large waves-effect waves-light deep-orange"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>

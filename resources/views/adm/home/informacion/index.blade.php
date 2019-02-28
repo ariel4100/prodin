@@ -23,19 +23,7 @@
                     </tr>
                     <tr>
                         <td><b>Título 2</b></td>
-                        <td>{!! $informacion->titulo2 !!}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Título 3</b></td>
-                        <td>{!! $informacion->titulo3 !!}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Descripción</b></td>
-                        <td>{!! $informacion->descripcion !!}</td>
-                    </tr>
-                    <tr>
-                        <td><b>Imagen</b></td>
-                        <td><img src="{{ asset('images/home/'.$informacion->file_image) }}"></td>
+                        <td>{!! $informacion->titulo4 !!}</td>
                     </tr>
                     <tr>
                         <td colspan="2">

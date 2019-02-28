@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/page/servicios.css') }}">
     <link rel="stylesheet" href="{{ asset('css/page/presupuesto.css') }}">
     <link rel="stylesheet" href="{{ asset('css/page/contacto.css') }}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
     <style>
         .footer-logo{
@@ -25,6 +26,14 @@
         }
     </style>
     @yield('style')
+    <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LfBj5QUAAAAAEWwuM3ljiqRMzbUovA_BHLFkywy', {action: 'homepage'}).then(function(token) {
+            ...
+            });
+        });
+    </script>
 </head>
 <body>
     <div id="app">
@@ -43,7 +52,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <!-- Librería para el recaptcha -->
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+
     <script>
         $(document).ready(function(){
             $('.collapsible').collapsible();

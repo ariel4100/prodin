@@ -6,6 +6,25 @@
 	<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13123.13333881303!2d-58.4107403!3d-34.6854174!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd5cef8cb390231a1!2sprodin!5e0!3m2!1ses!2sar!4v1551191801551" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
 	<!-- Formulario  -->
 	<div class="container container-fluid">
+		@if ($errors->any())
+			<div class="card-panel alert-error" style="background-color: red; color: white">
+				<ul><li>ALERTA:
+						@foreach ($errors->all() as $error)
+							{{ $error }}
+						@endforeach
+					</li>
+				</ul>
+			</div>
+		@endif
+
+		@if (session('alert'))
+			<div class="card-panel alert-success">
+				<ul><li>ALERTA:
+						{{ session('alert') }}
+					</li>
+				</ul>
+			</div>
+		@endif
 		<div class="row" >
 			<div class="col l3 s12" style="margin-top: 5%">
 				<div class="flex-column-center">

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Contacto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class SeccionPresupuestoController extends Controller
 {
@@ -25,7 +28,7 @@ class SeccionPresupuestoController extends Controller
                 'telefono'    => $request->get('telefono'),
                 'mensaje'  => $request->get('mensaje')]);
             Mail::send('page.presupuesto.email.presupuesto', $data[0], function($message){
-                $dato = Dato::where('tipo', 'email')->first();
+                $dato = Contacto::where('tipo', 'email')->first();
                 $message->subject('Te han enviado un mensaje desde la web');
                 $message->to($dato->descripcion);
                 $message->attach(storage_path('app/presupuesto/presupuesto_temp.pdf'));
@@ -39,7 +42,7 @@ class SeccionPresupuestoController extends Controller
                 'telefono'    => $request->get('telefono'),
                 'mensaje'  => $request->get('mensaje')]);
             Mail::send('page.presupuesto.email.presupuesto', $data[0], function($message){
-                $dato = Dato::where('tipo', 'email')->first();
+                $dato = Contacto::where('tipo', 'email')->first();
                 $message->subject('Te han enviado un mensaje desde la web');
                 $message->to($dato->descripcion);
             }

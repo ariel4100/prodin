@@ -6,6 +6,7 @@ use App\Categoria;
 use App\Producto;
 use App\ProductoRelacionados;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
@@ -50,6 +51,14 @@ class ProductoController extends Controller
             $imagenameplano = "no-image.jpg";
         }
 
+        if($request->file('file_ficha')!=null){
+
+            $ruta                 = 'productos';
+            $path                 = Storage::putFileAs($ruta, $request->file('file_ficha'),'producto'.'.'.$request->file('file_ficha')->getClientOriginalExtension());
+            $rutaNombre           = 'producto'.'.'.$request->file('file_ficha')->getClientOriginalExtension();
+            $producto->file_ficha = $rutaNombre;
+
+        }
         /*if($request->file('file_ficha')!=null){
 
             $ruta                 = 'productos';
@@ -123,7 +132,14 @@ class ProductoController extends Controller
         }else{
             $imagenameplano = $producto->file_plano;
         }
+        if($request->file('file_ficha')!=null){
 
+            $ruta                 = 'productos';
+            $path                 = Storage::putFileAs($ruta, $request->file('file_ficha'),'producto'.$id.'.'.$request->file('file_ficha')->getClientOriginalExtension());
+            $rutaNombre           = 'producto'.$id.'.'.$request->file('file_ficha')->getClientOriginalExtension();
+            $producto->file_ficha = $rutaNombre;
+
+        }
         /*if($request->file('file_ficha')!=null){
 
             $ruta                 = 'productos';
@@ -145,15 +161,7 @@ class ProductoController extends Controller
         $producto->file_plano = $imagenameplano;
         $producto->save();
 
-        if ($request->get('relacionados')) {
-            $relacionados = $request->get('relacionados');
-            foreach ($relacionados as $item) {
-                ProductoRelacionados::updateOrCreate([
-                    'producto_id' => $item,
-                    'producto' => $id,
-                ]);
-            }
-        }
+
 
         return redirect()->route('productos.index')->with('alert', "Registro almacenado exitósamente" );
     }

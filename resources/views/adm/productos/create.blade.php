@@ -86,7 +86,7 @@
 
                                     <input class="file-path validate" type="text">
 
-                                    <span class="helper-text" data-error="wrong" data-success="right">Tamaño recomendado: 1400x334</span>
+                                    <span class="helper-text" data-error="wrong" data-success="right">Subir PDF</span>
 
                                 </div>
 

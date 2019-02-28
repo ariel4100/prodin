@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contacto;
+use App\Http\Requests\SeccionContactoRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -21,11 +22,12 @@ class SeccionContactoController extends Controller
         return view('page.contacto.index', compact('mensaje', 'seccion', 'mensaje_previo', 'mapa', 'telefono_1', 'telefono_2', 'telefono_3', 'email', 'direccion'));
     }
 
-    public function store(Request $request)
+    public function store(SeccionContactoRequest $request)
     {
         $data = array(['nombre'   => $request->get('nombre'),
             'apellido' => $request->get('apellido'),
             'email'    => $request->get('email'),
+            'telefono'    => $request->get('telefono'),
             'mensaje'  => $request->get('mensaje')]);
         Mail::send('page.contacto.email.contacto', $data[0], function($message){
             $dato = Contacto::where('tipo', 'email')->first();

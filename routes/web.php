@@ -27,6 +27,11 @@ Route::post('enviarpresupuesto', 'SeccionPresupuestoController@store')->name('en
 Route::get('/servicios', 'SeccionServicioController@index')->name('servicios.page');
 Route::resource('/contacto', 'SeccionContactoController');
 
+//Producto-Descarga
+Route::get('/productoDown/{file}', function ($file) {
+    return Storage::download("productos/$file");
+})->name('producto-down');
+
 Route::prefix('adm')->group(function (){
     Route::get('/', function () {
         return view('auth.login');
@@ -89,7 +94,7 @@ Route::middleware('auth')->prefix('adm')->group(function (){
 
     //Ruta para la gestión de contacto y redes
     Route::prefix('datos')->group(function () {
-        Route::get('contacto', 'ContactoController@contacto')->name('contacto.index');
+        Route::get('contacto', 'ContactoController@contacto')->name('contacto.index.adm');
         Route::get('contacto/edit/{id}', 'ContactoController@editContacto');
         Route::put('update/{id}', 'ContactoController@update');
     });

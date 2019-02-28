@@ -71,8 +71,16 @@
 						<p>
 							{!! $producto->descripcion !!}
 						</p>
-						<a href="" class="btn" style="background-color: #094984;">FICHA TECNICA</a>
-						<a href="" class="btn btn-warning">mercado libre</a>
+						@if($producto->file_ficha != null)
+							<div class="col s12 m6" >
+								<a href="{{route('producto-down', $producto->file_ficha)}}" target="_blank"  class="waves-effect waves-light btn z-depth-0" id="estandar-btn" style="background: #094984 !important; border-radius: 0 !important">DESCARGAR PDF</a>
+							</div>
+						@endif
+						@if($producto->link_mercadolibre != null)
+							<div class="col s12 m6" >
+								<a href="{{ $producto->link_mercadolibre }}" target="_blank"  class="waves-effect waves-light btn z-depth-0" id="estandar-btn" style="background: #FFE600;  border-radius: 0 !important"><img src="{{ asset('images/varios/mercadolibre_btn.png') }}"></a>
+							</div>
+						@endif
 					</div>
 				</div>
 				<div class="row">
@@ -80,12 +88,35 @@
 						{!! $producto->caracteristicas !!}
 					</div>
 					<div class="col s6">
-						<img src="{{ asset('images/productos/plano/'. $producto->file_plano) }}" class="" alt="">
+						@if($producto->file_plano != null)
+							<div class="col s12 m12 l9">
+								<div class="row">
+									<p id="productos-show-familia" style="color: #25d366"> DETALLES</p>
+								</div>
+								<img src="{{ asset('images/productos/plano/'. $producto->file_plano) }}" class="" alt="">
+							</div>
+						@endif
 					</div>
 				</div>
 				<div class="row">
 					<div class="col s12">
 						{!! $producto->especificaciones !!}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12">
+						@foreach($relacionados as $r)
+							<div class="row">
+								<div class="col s4 ">
+									<a href="{{ route('show.page', $r->producto->id) }}">
+										<div class="" style="">
+											<img src= "{{ asset('images/productos/'. $r->producto->file_image) }}" class="responsive-img"   alt="smaple image">
+										</div>
+										<p class=" center">{{ $r->producto->nombre }}</p>
+									</a>
+								</div>
+							</div>
+						@endforeach
 					</div>
 				</div>
 			</div>
