@@ -20,11 +20,53 @@
     <link rel="stylesheet" href="{{ asset('css/page/contacto.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+
     <style>
         .footer-logo{
             margin-top: 80px;
         }
+        html {
+            line-height: 1.5;
+            font-family: "open sans";
+            font-weight: normal;
+            color: rgba(0,0,0,0.87);
+        }
+        .product-item .product-image {
+            box-shadow: 0 0 3px #ccc;
+            border-bottom: 1px solid #a8a8a8;
+            position: relative;
+        }
+        .product-item .product-overlay {
+            opacity: 0;
+            transition-property: opacity;
+            transition-duration: .5s;
+            position: absolute;
+            background-color: rgba(0,0,0,0.7);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .product-item:hover .product-overlay {
+            opacity: 1;
+        }
+        .product-item .product-overlay .icon {
+            background-color: #2DC5EE;
+            color: #fff;
+            padding: 10px 10px 5px;
+            border-radius: 50%;
+        }
     </style>
+    <!-- Librería para Slick -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css"/>
+
+
+    <!-- Librería para la animación  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     @yield('style')
     <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
     <script>
@@ -35,7 +77,7 @@
         });
     </script>
 </head>
-<body>
+<body style="font-size: 18px;">
     <div id="app">
         @include('partials.navbar')
         <main class=" ">
@@ -58,9 +100,10 @@
             $('.collapsible').collapsible();
             $('.sidenav').sidenav();
 
-            $('.carousel.carousel-slider').carousel({
+            $('.carousel').carousel({
                 fullWidth: true,
-                indicators: true
+                indicators: true,
+                duration: 300,
             });
 
             $('.slick-marcas').slick({

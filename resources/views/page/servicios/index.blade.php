@@ -9,7 +9,7 @@
                     <div class="col s12" >
                         @if($s->id%2 == 0)
                             <div class="col s10  m10 l6" id="descripcion-servicios" style="border-right: 1px solid #BBBBBB; padding-bottom: 10px; text-align: right;">
-                                <p class="nombre-servicios" style="text-align: right;">{{ $s->nombre }}</p>
+                                <p class="nombre-servicios" style="text-align: right; font-family: quicksand">{{ $s->nombre }}</p>
                                 <p class="descripcion_breve-servicios" style="text-align: right;">{{ $s->descripcion_breve }}</p>
                                 <span   class="descripcion-servicios"style="text-align: right;">{!! $s->descripcion !!}</span>
                             </div>
@@ -21,7 +21,7 @@
                                 <img src="{{ asset('images/servicios/'.$s->file_image) }}" class="responsive-img">
                             </div>
                             <div class="col s10  m10 l6" id="descripcion-servicios" style="border-left: 1px solid #BBBBBB; padding-bottom: 25px">
-                                <p class="nombre-servicios">{{ $s->nombre }}</p>
+                                <p class="nombre-servicios" style="font-family: quicksand">{{ $s->nombre }}</p>
                                 <p class="descripcion_breve-servicios">{{ $s->descripcion_breve }}</p>
                                 <span class="descripcion-servicios" >{!! $s->descripcion !!}</span>
                             </div>

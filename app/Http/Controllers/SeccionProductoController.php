@@ -30,6 +30,9 @@ class SeccionProductoController extends Controller
         $familias = Categoria::orderBy('orden')->get();
         $galeria = Galeria::where('producto_id',$id)->orderBy('orden')->get();
         $relacionados = ProductoRelacionados::where('producto',$id)->get();
+        $relacionados = ProductoRelacionados::where('producto',$id)
+            ->leftJoin("productos","productos.id","=","producto_relacionados.producto_id")
+            ->get();
         return view('page.productos.show', compact('producto','familias','galeria','familia','relacionados'));
     }
 }

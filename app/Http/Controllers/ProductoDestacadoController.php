@@ -25,7 +25,7 @@ class ProductoDestacadoController extends Controller
         $destacado  = ProductoDestacado::find($id);
         $destacados = Producto::orderBy('orden')->get();
 
-        return view('adm.home.destacados.edit', compact('destacado', 'destacados'));
+        return view('adm.home.productosDestacados.edit', compact('destacado', 'destacados'));
     }
 
     public function store(Request $request)
@@ -35,9 +35,9 @@ class ProductoDestacadoController extends Controller
         $destacado->orden = $request->orden;
 
         if($destacado->save())
-            return redirect()->back()->with('alert', "Registro almacenado exitósamente" );
+            return redirect()->route('destacado.productos')->with('alert', "Registro almacenado exitósamente" );
         else
-            return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
+            return redirect()->route('destacado.productos')->with('errors', "Ocurrió un error al intentar actualizar el registro" );
     }
 
     public function update(Request $request, $id)
@@ -47,8 +47,8 @@ class ProductoDestacadoController extends Controller
         $destacado->orden       = $request->orden;
 
         if($destacado->save())
-            return redirect('adm/home/destacados')->with('alert', "Registro almacenado exitósamente" );
+            return redirect()->route('destacado.productos')->with('alert', "Registro almacenado exitósamente" );
         else
-            return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
+            return redirect()->route('destacado.productos')->with('errors', "Ocurrió un error al intentar actualizar el registro" );
     }
 }

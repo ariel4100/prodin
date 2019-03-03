@@ -4,6 +4,15 @@
 <div class="container" id="container-fluid">
     <div class="row">
         <div class="col s12">
+            <nav>
+                <div class="nav-wrapper grey">
+                    <div class="col s12">
+                        <a href="{{ route('home') }}" class="breadcrumb">Home</a>
+                        <a href="{{ route('productos.index') }}" class="breadcrumb">Productos</a>
+                        <a href="" class="breadcrumb">Galeria</a>
+                    </div>
+                </div>
+            </nav>
             <form method="POST"  enctype="multipart/form-data" action="{{action('GaleriaController@store')}}" class="col s12 m8 offset-m2 xl10 offset-xl1">
                 {{ csrf_field() }}
 

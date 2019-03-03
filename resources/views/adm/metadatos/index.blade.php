@@ -4,6 +4,7 @@
 <div class="container" id="container-fluid">
     <div class="row">
         <div class="col s12">
+            @include('adm.partials.alert')
             <nav>
                 <div class="nav-wrapper grey">
                     <div class="col s12">

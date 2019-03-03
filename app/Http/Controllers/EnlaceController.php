@@ -39,9 +39,9 @@ class EnlaceController extends Controller
         $enlace->orden = $request->orden;
         $enlace->url = $request->url;
         if($enlace->save())
-            return redirect()->back()->with('alert', "Registro almacenado exitósamente" );
+            return redirect()->route('enlace')->with('alert', "Registro almacenado exitósamente" );
         else
-            return redirect()->back()->with('errors', "Ocurrió un error al intentar almacenado el registro" );
+            return redirect()->route('enlace')->with('errors', "Ocurrió un error al intentar almacenado el registro" );
     }
 
 
@@ -84,9 +84,9 @@ class EnlaceController extends Controller
         $enlace->orden = $request->orden;
         $enlace->url = $request->url;
         if($enlace->save())
-            return redirect()->back()->with('alert', "Registro actualizado exitósamente" );
+            return redirect()->route('enlace')->with('alert', "Registro actualizado exitósamente" );
         else
-            return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
+            return redirect()->route('enlace')->with('errors', "Ocurrió un error al intentar actualizar el registro" );
     }
 
     /**
@@ -100,8 +100,8 @@ class EnlaceController extends Controller
         $enlace = Enlace::find($id);
 
         if($enlace->delete())
-            return redirect()->back()->with('alert', "Registro eliminado exitósamente" );
+            return redirect()->route('enlace')->with('alert', "Registro eliminado exitósamente" );
         else
-            return redirect()->back()->with('errors', "Ocurrió un error al intentar eliminar el registro" );
+            return redirect()->route('enlace')->with('errors', "Ocurrió un error al intentar eliminar el registro" );
     }
 }

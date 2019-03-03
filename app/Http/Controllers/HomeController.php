@@ -43,15 +43,25 @@ class HomeController extends Controller
     public function update(Request $request,$id)
     {
         $informacion = Informacion::find($id);
-        $datos       = $request->all();
 
-        $file_save   = Helpers::saveImage($request->file('file_image'), 'home');
-        $file_save ? $datos['file_image'] = $file_save : false;
+        if ($request->hasFile('file_image'))
+        {
+            $file = $request->file('file_image');
+            $imagename = uniqid().'_'.$file->getClientOriginalName();
+            if (!file_exists('images/home'))
+            {
+                mkdir('images/home',0777,true);
+            }
+            $file->move('images/home',$imagename);
+        }else{
+            $imagename = "no-image.jpg";
+        }
 
-        $informacion->fill($datos);
+        $informacion->titulo1 = $request->titulo1;
+        $informacion->titulo4 = $request->titulo4;
 
         if($informacion->save())
-            return redirect('adm/home/informacion/ver')->with('alert', "Registro actualizado exitósamente" );
+            return redirect()->route('home.info')->with('alert', "Registro actualizado exitósamente" );
         else
             return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
     }

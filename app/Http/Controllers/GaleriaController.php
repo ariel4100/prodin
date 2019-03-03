@@ -47,13 +47,13 @@ class GaleriaController extends Controller
                 if($galeria->save())
                     $status = 1;
                 else
-                    return redirect('adm/productos/producto')->with('errors', "Ocurrió un error al intentar almacenar el registro" );
+                    return redirect()->route('galeria')->with('errors', "Ocurrió un error al intentar almacenar el registro" );
             }
         }
         if($status==1)
-            return redirect()->back()->with('alert', "Registro almacenado exitósamente" );
+            return redirect()->route('galeria',$producto_id)->with('alert', "Registro almacenado exitósamente" );
         else
-            return redirect()->with('errors', "Ocurrió un error al intentar almacenar el registro" );
+            return redirect()->route('galeria',$producto_id)->with('errors', "Ocurrió un error al intentar almacenar el registro" );
     }
 
 
@@ -67,16 +67,27 @@ class GaleriaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $galeria   = Galeria::find($id);
+        $galeria = Galeria::find($id);
 
-        $datos     = $request->all();
-        $file_save = Helpers::saveImage($request->file('file_image'), 'galeria_productos');
-        $file_save ? $datos['file_image'] = $file_save : false;
+        if ($request->hasFile('file_image'))
+        {
+            $file = $request->file('file_image');
+            $imagename = uniqid().'_'.$file->getClientOriginalName();
+            if (!file_exists('images/productos/galeria'))
+            {
+                mkdir('images/productos/galeria',0777,true);
+            }
 
-        $galeria->fill($datos);
+            $file->move('images/productos/galeria',$imagename);
 
+        }else{
+            $imagename = $galeria->file_image;
+        }
+        $galeria->producto_id =  $galeria->producto_id;
+        $galeria->file_image = $imagename;
+        $galeria->orden = $request->orden;
         if($galeria->save())
-            return  redirect()->back()->with('alert', "Registro actualizado exitósamente" );
+            return  redirect()->route('galeria',$galeria->producto->id)->with('alert', "Registro actualizado exitósamente" );
         else
             return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
     }
@@ -87,10 +98,10 @@ class GaleriaController extends Controller
         $producto = Producto::find($galeria->producto->id);
         $path = $galeria->file_image;
 
-        \File::exists(public_path('images/galeria_productos/' . $galeria->file_image));
+        \File::exists(public_path('images/productos/galeria/' . $galeria->file_image));
 
         if ($galeria->delete()) {
-            \File::delete(public_path('images/galeria_productos/' . $path));
+            \File::delete(public_path('images/productos/galeria/' . $path));
             $galeria = Galeria::where('producto_id', $producto->id)->get();
             return redirect()->back()->with('alert', "Registro eliminado exitósamente");
         } else {

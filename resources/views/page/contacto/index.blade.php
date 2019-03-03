@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('style')
+
+@stop
 @section('content')
 
 	<!-- Mapa  -->
@@ -25,8 +28,8 @@
 				</ul>
 			</div>
 		@endif
-		<div class="row" >
-			<div class="col l3 s12" style="margin-top: 5%">
+		<div class="row" style="margin-top: 5%">
+			<div class="col l3 s12 center"  >
 				<div class="flex-column-center">
 					<img src="{{ asset('images/contacto/logo_direc.png') }} " class="responsive-img" alt="" >
 					@if($email)
@@ -48,9 +51,9 @@
 
 				</div>
 			</div>
-			<div class="col l9 s12">
+			<div class="col l9 s12  " style="">
 
-				<form method="POST"  enctype="multipart/form-data" action="{{action('SeccionContactoController@store')}}" >
+				<form method="POST" class="container" style="    width: 90% !important" enctype="multipart/form-data" action="{{action('SeccionContactoController@store')}}" >
 					{{ csrf_field() }}
 
 					<div class="row">
@@ -73,17 +76,17 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m6 l12">
-							<input style="height: 150px;" id="mensaje" type="text" name="mensaje" class="validate"  @if($mensaje!='') value="{{$mensaje}}" @else value="{{ old('mensaje') }}" @endif>
+							<input style="height: 100px;" id="mensaje" type="text" name="mensaje" class="validate"  @if($mensaje!='') value="{{$mensaje}}" @else value="{{ old('mensaje') }}" @endif>
 							<label class="label-form-contact" for="mensaje">Mensaje</label>
 						</div>
-						<div class="input-field col s12 m6 l6">
+						<div class="input-field col s12 m6 l6 center">
 							<div class="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
 						</div>
 						<div class="input-field col s12 m6 l6">
 							<p>
 								<label>
 									<input type="checkbox" required name="condiciones" />
-									<span>Acepto los términos y condiciones</span>
+									<span>Acepto los términos y condiciones de privacidad</span>
 								</label>
 							</p>
 						</div>

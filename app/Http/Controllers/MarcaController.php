@@ -38,9 +38,9 @@ class MarcaController extends Controller
         $marca->file_image = $imagename;
         $marca->orden = $request->orden;
         if($marca->save())
-            return redirect()->back()->with('alert', "Registro almacenado exitósamente" );
+            return redirect()->route('marca.index')->with('alert', "Registro almacenado exitósamente" );
         else
-            return redirect()->back()->with('errors', "Ocurrió un error al intentar almacenado el registro" );
+            return redirect()->route('marca.index')->with('errors', "Ocurrió un error al intentar almacenado el registro" );
     }
 
 
@@ -82,9 +82,9 @@ class MarcaController extends Controller
         $marca->file_image = $imagename;
         $marca->orden = $request->orden;
         if($marca->save())
-            return redirect('adm/marcas/marca')->with('alert', "Registro actualizado exitósamente" );
+            return redirect()->route('marca.index')->with('alert', "Registro actualizado exitósamente" );
         else
-            return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
+            return redirect()->route('marca.index')->with('errors', "Ocurrió un error al intentar actualizar el registro" );
     }
 
     /**

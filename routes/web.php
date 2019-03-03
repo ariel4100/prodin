@@ -38,9 +38,9 @@ Route::prefix('adm')->group(function (){
     });
     Auth::routes();
 });
-//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware('auth')->prefix('adm')->group(function (){
+
+Route::prefix('adm')->group(function (){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/home/informacion', 'HomeController@indexInformacion')->name('home.info');
     Route::get('/home/informacion/{id}/edit', 'HomeController@editInformacion')->name('home.info.edit');
@@ -51,13 +51,22 @@ Route::middleware('auth')->prefix('adm')->group(function (){
     Route::get('home/destacados/productos/crear', 'ProductoDestacadoController@create')->name('destacado.productos.create');
     Route::post('home/destacados/productos/store', 'ProductoDestacadoController@store')->name('destacado.productos.store');
     Route::get('home/destacados/productos/{id}/edit', 'ProductoDestacadoController@edit')->name('destacado.productos.edit');
-
+    Route::put('home/destacados/productos/actualizar/{id}', 'ProductoDestacadoController@update')->name('destacado.productos.update');
 
     Route::get('home/destacados/categorias', 'CategoriaDestacadoController@index')->name('destacado.categoria');
     Route::get('home/destacados/categorias/crear', 'CategoriaDestacadoController@create')->name('destacado.categoria.create');
     Route::post('home/destacados/categoria/store', 'CategoriaDestacadoController@store')->name('destacado.categoria.store');
-    Route::post('home/destacados/categorias/{id}/edit', 'CategoriaDestacadoController@edit')->name('destacado.categoria.edit');
+    Route::get('home/destacados/categorias/{id}/editar', 'CategoriaDestacadoController@edit')->name('destacado.categoria.edit');
+    Route::put('home/destacados/categoria/actualizar/{id}', 'CategoriaDestacadoController@update')->name('destacado.categoria.update');
 
+    //Enlaces
+    Route::prefix('home/')->group(function () {
+        Route::get('enlace', 'EnlaceController@index')->name('enlace');
+        Route::get('enlace/editar/{id}', 'EnlaceController@edit')->name('enlace.edit');
+        Route::put('enlace/{id}/edit', 'EnlaceController@update')->name('enlace.update');
+
+        Route::get('delete/{id}', 'EnlaceController@eliminar');
+    });
 
     //Ruta para la seccion Empresa
     Route::get('/empresa', 'EmpresaController@index')->name('empresa');
@@ -79,11 +88,11 @@ Route::middleware('auth')->prefix('adm')->group(function (){
 
         //Ruta para la seccion Galeria
         Route::prefix('galerias/')->group(function () {
-            Route::get('index/{id}', 'GaleriaController@index');
+            Route::get('index/{id}', 'GaleriaController@index')->name('galeria');
             Route::get('create/{id}', 'GaleriaController@create');
             Route::post('store', 'GaleriaController@store');
             Route::get('edit/{id}', 'GaleriaController@edit');
-            Route::put('update/{id}', 'GaleriaController@update');
+            Route::put('update/{id}', 'GaleriaController@update')->name('galeria.update');
             Route::get('delete/{id}', 'GaleriaController@eliminar');
         });
     });
@@ -105,7 +114,7 @@ Route::middleware('auth')->prefix('adm')->group(function (){
         Route::get('delete/{id}', 'MarcaController@eliminar');
     });
     //Ruta para la gestión de sliders
-    Route::get('{seccion}/slider/', 'SliderController@index');
+    Route::get('{seccion}/slider/', 'SliderController@index')->name('slider');
     Route::get('{seccion}/slider/crear/', 'SliderController@create');
     Route::post('{seccion}/slider/guardar', 'SliderController@store');
     Route::get('{seccion}/slider/edit/{id}', 'SliderController@edit');
@@ -113,13 +122,7 @@ Route::middleware('auth')->prefix('adm')->group(function (){
     Route::get('slider/delete/{id}', 'SliderController@eliminar');
 
     // Admin Marcas
-    Route::prefix('home/')->group(function () {
-        Route::get('enlace', 'EnlaceController@index')->name('enlace');
-        Route::get('enlace/editar/{id}', 'EnlaceController@edit')->name('enlace.edit');
-        Route::put('enlace/{id}/edit', 'EnlaceController@update')->name('enlace.update');
 
-        Route::get('delete/{id}', 'EnlaceController@eliminar');
-    });
 
     //Ruta para la gestión de logos
     Route::resource('logos', 'LogosController');

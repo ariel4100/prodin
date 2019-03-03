@@ -7,7 +7,7 @@
             <nav>
                 <div class="nav-wrapper grey">
                     <div class="col s12">
-                        <a href="#!" class="breadcrumb">Home</a>
+                        <a href="{{ route('home') }}" class="breadcrumb">Home</a>
                         <a href="#!" class="breadcrumb">Enlaces</a>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 #descripcion-empresa p, #descripcion-empresa{
 	font-family: 'Lato';
 	font-size: 18px;
-	line-height: 180%;
+
 	margin-top: 10px;
 }
 
@@ -13,7 +13,7 @@
 #titulos-empresa{
 	background: #FAFAFA;
 	height: 292px;
-	line-height: 200%;
+
 	font-size: 23px;
 	font-family: 'Lato Italic';
 	color: #009688;

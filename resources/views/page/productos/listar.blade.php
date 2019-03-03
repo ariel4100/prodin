@@ -7,9 +7,12 @@
 			box-shadow: none;
 		}
 		.collapsible-header {
+			padding: unset;
+			background-color: #fff;
+			border-bottom: 1px solid #ddd;
 		}
 		.collapsible-body {
-			padding: 8px;
+			padding: 0px !important;
 		}
 		a{
 			color: #747484;
@@ -17,8 +20,6 @@
 
 		.hover {
 			background-color: rgba(0,0,0,0.7);
-
-
 		}
 	</style>
 @stop
@@ -26,10 +27,10 @@
 	<div class="container" style=" ">
 		<div class="row">
 			<div class="breadcrumb-productos" style="padding: 3%">
-				<a href="{{ action('SeccionProductoController@index') }}">Productos</a> | <a href="{{ route('listar.page', $familia->id) }}">{{$familia->nombre}}</a>
+				  <a href="{{ route('listar.page', $familia->id) }}">{{$familia->nombre}}</a> |
 			</div>
-			<div class="col s3">
-				<ul class="collapsible">
+			<div class="col l3 m12 s12">
+				<ul class="collapsible" style="font-family: quicksand">
 					@foreach($familias as $f)
 						<li @if($f->id == $familia->id)  style="color: #2DC5EE;" @endif>
 							<div class="collapsible-header"
@@ -39,11 +40,11 @@
 								</a>
 								<i class="material-icons">keyboard_arrow_right</i>
 							</div>
-							<div class="collapsible-body" style="padding:0">
+							<div class="collapsible-body"  >
 								@foreach($f->productos as $p)
-									<ul class="collapsible">
+									<ul class="collapsible" style="font-family: quicksand">
 										<li class="active">
-											<div class="collapsible-header">
+											<div class="collapsible-header" style="    border-bottom: unset;">
 												<a href="{{ route('show.page', $p->id) }}" class="graysillo"
 
 												>{{$p->nombre }}</a>
@@ -56,19 +57,24 @@
 					@endforeach
 				</ul>
 			</div>
-			<div class="col s9">
+			<div class="col l9 m12 s12">
+				<div class="row center">
 				@foreach($productos as $p)
-					<div class="row">
-						<div class="col s4 ">
-							<a href="{{ route('show.page', $p->id) }}">
-								<div class="" style="">
-									<img src= "{{ asset('images/productos/'. $p->file_image) }}" class="responsive-img"   alt="smaple image">
+						<a class="product-item col s12 l4 m6 " style="margin-bottom: 5%" href="{{ route('show.page', $p->id) }}">
+							<div class="product-image">
+								<img src="{{ asset('images/productos/'. $p->file_image) }}" class="responsive-img">
+								<div class="product-overlay">
+									<div class="icon">
+										<i class="material-icons">add</i>
+									</div>
 								</div>
-								<p class=" center">{{ $p->nombre }}</p>
-							</a>
-						</div>
-					</div>
+							</div>
+							<div style="color: #084884;  margin-top: 5%">
+								{{ $p->nombre  }}
+							</div>
+						</a>
 				@endforeach
+				</div>
 			</div>
 		</div>
 	</div>

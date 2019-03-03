@@ -22,8 +22,18 @@ class Producto extends Model
         return $this->hasMany('App\Galeria');
     }
 
-    public function destacado()
+    public function categoriadestacado()
+    {
+        return $this->hasOne('App\CategoriaDestacado');
+    }
+
+    public function productodestacado()
     {
         return $this->hasOne('App\ProductoDestacado');
+    }
+
+    public function productorelacionados()
+    {
+        return $this->hasMany('App\ProductoRelacionados');
     }
 }

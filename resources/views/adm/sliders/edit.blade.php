@@ -4,7 +4,16 @@
 <div class="container" id="container-fluid">
     <div class="row">
         <div class="col s12">
-            <form method="POST"  enctype="multipart/form-data" action="{{action('SliderController@update', ['id' => $slider->id, 'seccion' => 'empresa'])}}" class="col s12 m8 offset-m2 xl10 offset-xl1">
+            <nav>
+                <div class="nav-wrapper grey">
+                    <div class="col s12">
+                        <a href="{{ route('home') }}" class="breadcrumb">Home</a>
+                        <a href="{{ action('SliderController@index', ['seccion' => $seccion]) }}" class="breadcrumb">Slider</a>
+                        <a href="" class="breadcrumb">Editar</a>
+                    </div>
+                </div>
+            </nav>
+            <form method="POST"  enctype="multipart/form-data" action="{{action('SliderController@update', ['id' => $slider->id, 'seccion' => $seccion])}}" class="col s12 m8 offset-m2 xl10 offset-xl1">
                 {{ csrf_field() }}
                 {{ method_field('PUT')}}
 
@@ -36,7 +45,7 @@
 
                     <div class="input-field col s6">
                         <select name="seccion" disabled>
-                            <option value="home" >Home</option>
+                            <option value="{{ $seccion }}" >{{ $seccion }}</option>
                         </select>
                     </div>
                     <div class="input-field col s6">

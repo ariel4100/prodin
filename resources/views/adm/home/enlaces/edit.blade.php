@@ -7,8 +7,9 @@
             <nav>
                 <div class="nav-wrapper grey">
                     <div class="col s12">
-                        <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Editar Enlace</a>
+                        <a href="{{ route('home') }}" class="breadcrumb">Home</a>
+                        <a href="{{ route('enlace') }}" class="breadcrumb">Enlace</a>
+                        <a href="#!" class="breadcrumb">Editar</a>
                     </div>
                 </div>
             </nav>
@@ -30,10 +31,9 @@
                             <span class="helper-text" data-error="wrong" data-success="right">Tamaño recomendado: 176x28</span>
                         </div>
                     </div>
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">keyboard_arrow_right</i>
-                        <input id="icon_prefix" type="text" class="validate" name="nombre"  value="{{ $enlace->nombre }}">
-                        <label for="icon_prefix">Nombre</label>
+                    <div class="input-field col s12">
+                        <h6>Nombre</h6>
+                        <textarea name="nombre" class="validate" id="" cols="30" rows="10">{!! $enlace->nombre !!}</textarea>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">text_rotation_none</i>
@@ -55,3 +55,16 @@
     </div>
 </div>
 @endsection
+@section('script')
+    <script>
+        CKEDITOR.replace('nombre');
+
+        CKEDITOR.config.height = '150px';
+
+        CKEDITOR.config.width = '100%';
+
+
+
+    </script>
+
+@stop

@@ -4,7 +4,15 @@
 <div class="container" id="container-fluid">
     <div class="row">
         <div class="col s12">
-
+            @include('adm.partials.alert')
+            <nav>
+                <div class="nav-wrapper grey">
+                    <div class="col s12">
+                        <a href="{{ route('home') }}" class="breadcrumb">Home</a>
+                        <a href="#!" class="breadcrumb">Usuarios</a>
+                    </div>
+                </div>
+            </nav>
             <h5>Usuarios</h5>
             <div class="divider"></div>
             <table class="index-table responsive-table ">

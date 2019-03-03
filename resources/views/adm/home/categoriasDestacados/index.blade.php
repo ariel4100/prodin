@@ -8,11 +8,11 @@
                 <div class="nav-wrapper grey">
                     <div class="col s12">
                         <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Categoria Destacados</a>
+                        <a href="#!" class="breadcrumb">Categorias Destacados</a>
                     </div>
                 </div>
             </nav>
-            <h5>Categoria Destacados</h5>
+            <h5>Categorias Destacados</h5>
             <div class="divider"></div>
             <table class="index-table-logos responsive-table ">
                 <thead>
@@ -30,15 +30,15 @@
                         <td style="width: 100px;">{{ $d->categoria->nombre }}</td>
                         <td>{{ $d->orden }}</td>
                         <td>
-                            <a href=" {{ action('CategoriaDestacadoController@edit', $d->id)}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="material-icons">autorenew</i></a>
-                            <a href=" {{ action('CategoriaDestacadoController@create')}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="material-icons">add</i></a>
+                            <a href=" {{ route('destacado.categoria.edit', $d->id)}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="material-icons">autorenew</i></a>
+                            <!--<a href=" {{ action('CategoriaDestacadoController@create')}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="material-icons">add</i></a>-->
                         </td>
                     </tr>
                 @empty
                     <tr>
                         <td colspan="3">No existen registros</td>
                         <td>
-                            <a href=" {{ action('CategoriaDestacadoController@create')}} " class="btn-floating btn-large waves-effect waves-light orange"><i class="material-icons">add</i></a>
+
                         </td>
                     </tr>
                 @endforelse

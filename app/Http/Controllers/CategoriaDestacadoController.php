@@ -27,28 +27,28 @@ class CategoriaDestacadoController extends Controller
         $destacado->orden = $request->orden;
 
         if($destacado->save())
-            return redirect()->back()->with('alert', "Registro almacenado exitósamente" );
+            return redirect()->route('destacado.categoria')->with('alert', "Registro almacenado exitósamente" );
         else
-            return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
+            return redirect()->route('destacado.categoria')->with('errors', "Ocurrió un error al intentar actualizar el registro" );
     }
 
     public function edit($id)
     {
         $destacado  = CategoriaDestacado::find($id);
-        $destacados = Producto::orderBy('orden')->get();
+        $destacados = Categoria::orderBy('orden')->get();
 
         return view('adm.home.categoriasDestacados.edit', compact('destacado', 'destacados'));
     }
 
     public function update(Request $request, $id)
     {
-        $destacado              = CategoriaDestacado::find($id);
+        $destacado = CategoriaDestacado::find($id);
         $destacado->categoria_id = $request->categoria_id;
-        $destacado->orden       = $request->orden;
+        $destacado->orden  = $request->orden;
 
         if($destacado->save())
-            return redirect('adm/home/destacados')->with('alert', "Registro almacenado exitósamente" );
+            return redirect()->route('destacado.categoria')->with('alert', "Registro almacenado exitósamente" );
         else
-            return redirect()->back()->with('errors', "Ocurrió un error al intentar actualizar el registro" );
+            return redirect()->route('destacado.categoria')->with('errors', "Ocurrió un error al intentar actualizar el registro" );
     }
 }

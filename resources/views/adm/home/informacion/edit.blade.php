@@ -12,7 +12,6 @@
                     </div>
                 </div>
             </nav>
-            <h5>Editar Información en HOME</h5>
             <div class="divider"></div>
             <form method="POST"  enctype="multipart/form-data" action="{{action('HomeController@update', $informacion->id)}}" class="col s12 m8 offset-m2 xl10 offset-xl1">
                 {{ csrf_field() }}
@@ -23,61 +22,16 @@
                     <div class="divider"></div>
 
                     <div class="row">
+                        <div class="col s12">
 
-                        <div class="file-field input-field s6">
-
-                            <div class="btn">
-
-                                <span>Imagen</span>
-
-                                <input type="file" name="file_image">
-
-                            </div>
-
-                            <div class="file-path-wrapper">
-
-                                <input class="file-path validate" type="text">
-
-                                <span class="helper-text" data-error="wrong" data-success="right">Tamaño recomendado: 1400x334</span>
-
-                            </div>
+                            <h6 for="textarea1">Título 1</h6>
 
                         </div>
-
-                    </div>
-
-                    <div class="row">
-
-                        <div class="file-field input-field s6">
-
-                            <div class="btn">
-
-                                <span>Imagen</span>
-
-                                <input type="file" name="file_image">
-
-                            </div>
-
-                            <div class="file-path-wrapper">
-
-                                <input class="file-path validate" type="text">
-
-                                <span class="helper-text" data-error="wrong" data-success="right">Tamaño recomendado: 1400x334</span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-
                         <div class="input-field col s12">
 
                             <i class="material-icons prefix">keyboard_arrow_right</i>
                             <textarea id="titulo1" name="titulo1"> {{ $informacion->titulo1 }} </textarea>
 
-                            <label for="icon_prefix">Título 1</label>
 
                         </div>
 
@@ -95,7 +49,7 @@
 
                         <div class="input-field col s12">
 
-                            <textarea id="titulo2" name="titulo2"> {{ $informacion->titulo4 }} </textarea>
+                            <textarea id="titulo2" name="titulo4"> {{ $informacion->titulo4 }} </textarea>
 
                         </div>
 

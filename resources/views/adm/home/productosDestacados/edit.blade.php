@@ -4,9 +4,17 @@
 <div class="container" id="container-fluid">
     <div class="row">
         <div class="col s12">
-            <h5>Seleccionar Destacados</h5>
+            <nav>
+                <div class="nav-wrapper grey">
+                    <div class="col s12">
+                        <a href="{{ route('home') }}" class="breadcrumb">Home</a>
+                        <a href="{{ action('ProductoDestacadoController@index') }}" class="breadcrumb">Productos Destacados</a>
+                        <a href="#!" class="breadcrumb">Editar</a>
+                    </div>
+                </div>
+            </nav>
             <div class="divider"></div>
-            <form method="POST"  enctype="multipart/form-data" action="{{action('DestacadoController@update', $destacado->id)}}" class="col s12 m8 offset-m2 xl10 offset-xl1">
+            <form method="POST"  enctype="multipart/form-data" action="{{route('destacado.productos.update', $destacado->id)}}" class="col s12 m8 offset-m2 xl10 offset-xl1">
                 {{ csrf_field() }}
                 {{ method_field('PUT')}}
 
@@ -30,7 +38,7 @@
                 </div>
                 <div class="row">
                     <div class="right">
-                        <a href="{{ action('DestacadoController@index') }}" class="waves-effect waves-light btn btn-color">Cancelar</a>
+                        <a href="{{ action('ProductoDestacadoController@index') }}" class="waves-effect waves-light btn btn-color">Cancelar</a>
                         <button class="btn waves-effect waves-light btn-color" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
                         </button>

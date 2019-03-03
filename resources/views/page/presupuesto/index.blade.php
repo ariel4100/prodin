@@ -88,7 +88,7 @@
 					<div class="row">
 						<div class="col l6">
 							<label >Mensaje</label>
-							<textarea id="detalles" cols="30" rows="10" name="detalles" class="materialize-textarea" placeholder="Mensaje"></textarea>
+							<textarea id="detalles" id="" cols="30" rows="10" name="detalles" class="materialize-textarea" placeholder="Mensaje"></textarea>
 						</div>
 
 						<div class="col l6">								

@@ -4,6 +4,15 @@
 <div class="container" id="container-fluid">
     <div class="row">
         <div class="col s12">
+            <nav>
+                <div class="nav-wrapper grey">
+                    <div class="col s12">
+                        <a href="{{ route('home') }}" class="breadcrumb">Home</a>
+                        <a href="{{ action('SliderController@index', ['seccion' => $seccion]) }}" class="breadcrumb">Slider</a>
+                        <a href="" class="breadcrumb">Crear</a>
+                    </div>
+                </div>
+            </nav>
             <form method="POST"  enctype="multipart/form-data" action="{{action('SliderController@store', ['seccion' => $seccion])}}" class="col s12 m8 offset-m2 xl10 offset-xl1">
                 {{ csrf_field() }}
 
