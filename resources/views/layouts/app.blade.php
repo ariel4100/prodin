@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Prodin Automacion</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Quicksand:500" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -32,8 +32,7 @@
             color: rgba(0,0,0,0.87);
         }
         .product-item .product-image {
-            box-shadow: 0 0 3px #ccc;
-            border-bottom: 1px solid #a8a8a8;
+            //box-shadow: 0 0 3px #ccc;
             position: relative;
         }
         .product-item .product-overlay {
@@ -45,7 +44,7 @@
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
+            bottom: 5px;
             display: flex;
             justify-content: center;
             align-items: center;

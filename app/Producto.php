@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     protected $fillable = [
-        'nombre', 'descripcion', 'file_image', 'file_ficha', 'file_plano', 'link_mercadolibre','orden'
+        'nombre', 'descripcion', 'file_image', 'file_ficha', 'file_plano', 'link_mercadolibre','orden','caracteristicas','especificaciones','categoria_id'
     ];
 
 
@@ -32,8 +32,8 @@ class Producto extends Model
         return $this->hasOne('App\ProductoDestacado');
     }
 
-    public function productorelacionados()
+    public function relacionados()
     {
-        return $this->hasMany('App\ProductoRelacionados');
+        return $this->hasOne('App\ProductoRelacionados');
     }
 }

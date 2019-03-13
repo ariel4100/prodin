@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -22,8 +23,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $user = new User ($request->all());
-        $user->password= bcrypt($request->password);
+        $user = new User ();
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->tipo_usuario = $request->tipo_usuario;
+        $user->password= Hash::make($request->password);
 
         if($user->save())
             return redirect('adm/usuarios/user')->with('alert', "Usuario registrado exitósamente" );
@@ -39,8 +43,15 @@ class UserController extends Controller
 
     public function update(Request $request, $id){
         $user = User::find($id);
-        $user->fill($request->all());
-        $user->password= bcrypt($request->password);
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->tipo_usuario = $request->tipo_usuario;
+        if ($request->password){
+            $user->password = Hash::make($request->password);
+        }else{
+            $user->password= $user->password;
+        }
+
 
         if($user->save())
             return redirect('adm/usuarios/user')->with('alert', "Usuario actualizado exitósamente" );

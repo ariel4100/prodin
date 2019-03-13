@@ -70,7 +70,7 @@
  */
 
 .slick-prev:before, .slick-next:before{
-    color: #009688 !important;
+    color: darkgray !important;
 }
 
 .slick-prev, .slick-next{

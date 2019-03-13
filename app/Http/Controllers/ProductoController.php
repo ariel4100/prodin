@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categoria;
 use App\Producto;
+use App\ProductoDestacado;
 use App\ProductoRelacionados;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -68,6 +69,7 @@ class ProductoController extends Controller
 
         }*/
 
+
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
         $producto->caracteristicas = $request->caracteristicas;
@@ -80,17 +82,25 @@ class ProductoController extends Controller
         $producto->file_plano = $imagenameplano;
         $producto->save();
 
-        $p = Producto::all('id');
+        $p = Producto::all();
         $idUltimo = $p->last();
         if ($request->get('relacionados')) {
-            $relacionados = $request->relacionados;
-            foreach ($relacionados as $item) {
+            foreach ($request->get('relacionados') as $item) {
                 //var_dump($item);
                 ProductoRelacionados::create([
                     'producto_id' => $item,
                     'producto' => $idUltimo->id,
                 ]);
             }
+        }
+
+        //Producto Destacado
+        if ($request->destacado)
+        {
+            $destacado = new ProductoDestacado();
+            $destacado->producto_id = $idUltimo->id;
+            $destacado->orden = $request->orden;
+            $destacado->save();
         }
 
         return redirect()->route('productos.index')->with('alert', "Registro almacenado exitósamente" );
@@ -100,13 +110,37 @@ class ProductoController extends Controller
     {
         $producto = Producto::find($id);
         $familias = Categoria::all();
-        $productos = Producto::where('id', '!=' , $id)->orderBy('orden')->get();
+        $productos = Producto::where('categoria_id', $producto->categoria_id)->orderBy('orden')->get();
         $relacionados = ProductoRelacionados::where('producto',$id)->orderBy('orden')->get();
         return view('adm.productos.edit', compact('familias', 'producto','productos','relacionados'));
     }
     public function update(Request $request, $id)
     {
         $producto  = Producto::find($id);
+
+
+        //Producto Destacado
+        if ($request->destacado)
+        {
+            $destacado = ProductoDestacado::where('producto_id',$id)->first();
+            if ($destacado)
+            {
+                $destacado->delete();
+            }
+
+            $destacado = new ProductoDestacado();
+            $destacado->producto_id = $id;
+            $destacado->orden = $request->orden;
+            $destacado->save();
+        }else{
+            $destacado = ProductoDestacado::where('producto_id',$id)->first();
+            if ($destacado)
+            {
+                $destacado->delete();
+            }
+        }
+
+
         if ($request->hasFile('file_image'))
         {
             $file = $request->file('file_image');
@@ -161,6 +195,18 @@ class ProductoController extends Controller
         $producto->file_plano = $imagenameplano;
         $producto->save();
 
+        if ($request->get('relacionados')){
+            $prore = ProductoRelacionados::where('producto',$id)->get();
+            foreach ($prore as $p) {
+                $p->delete();
+            }
+            foreach ($request->get('relacionados') as $item) {
+                ProductoRelacionados::create([
+                    'producto_id' => $item,
+                    'producto' => $id,
+                ]);
+            }
+        }
 
 
         return redirect()->route('productos.index')->with('alert', "Registro almacenado exitósamente" );
@@ -173,5 +219,12 @@ class ProductoController extends Controller
             return redirect()->back()->with('alert', "Registro eliminado exitósamente" );
         else
             return redirect()->back()->with('errors', "Ocurrió un error al intentar eliminar el registro" );
+    }
+
+
+    //por categoria
+    public function byCategory($id){
+        $byCategory = Producto::where('categoria_id',$id)->select('id','nombre')->get();
+        return response()->json($byCategory);
     }
 }

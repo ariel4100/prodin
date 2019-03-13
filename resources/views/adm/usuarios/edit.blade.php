@@ -30,11 +30,7 @@
                         <input id="icon_prefix" type="text" class="validate" name="name" value="{{$user->name}}" >
                         <label for="icon_prefix">Nombre</label>
                     </div>
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">keyboard_arrow_right</i>
-                        <input id="icon_prefix" type="text" class="validate" name="email" value="{{$user->email}}" >
-                        <label for="icon_prefix">Correo Electrónico</label>
-                    </div>
+
                     <div class="input-field col s6">
                         <i class="material-icons prefix">keyboard_arrow_right</i>
                         <input id="icon_prefix" type="password" class="validate" name="password"   >

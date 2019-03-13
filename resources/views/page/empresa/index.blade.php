@@ -2,16 +2,9 @@
 @section('style')
     <style>
 
-        .slider .slides li .caption {
-            color: #fff;
-            position: absolute;
-            top: 15%;
-
-            width: 40%;
-            opacity: 0;
-
+        .slider .slides li .caption p {
+            color: #ffffff;
         }
-
         #caption-sliders{
             width: 50%;
             padding-left: 20%;
@@ -34,12 +27,45 @@
                 margin-left: -10%;
             }
         }
+
+        .slider .slides {
+            background-color: #ffffff;
+            height: 500px !important;
+        }
+        .slider .indicators {
+            bottom: 5%;
+            z-index: 99999;
+        }
+        .slider .indicators .indicator-item {
+            height: 10px;
+            width: 10px;
+            background-color: rgba(255,255,255,0.7);
+        }
+        .slider .indicators .indicator-item.active {
+            background-color: rgba(255,255,255,1);
+        }
+
+        .slider {
+            position: relative;
+            height: 500px !important;
+            width: 100%;
+        }
+
+        .slider-product .indicators .indicator-item {
+            height: 10px;
+            width: 10px;
+            background-color: rgba(181,181,181,0.7);
+        }
+        .slider-product .indicators .indicator-item.active {
+            background-color: rgba(181,181,181,1);
+        }
+
     </style>
 @stop
 @section('content')
 
-    <div class="slider" id="slider-home">
-        <ul class="slides">
+    <div class="slider" id="slider-home" style=" height: 500px !important;">
+        <ul class="slides" style=" height: 500px !important;">
             @forelse($sliders as $s)
                 <li>
                     <img src="{{ asset('images/sliders/'.$s->file_image) }}" class="img-responsive" style="position: absolute;" alt="">
@@ -78,8 +104,8 @@
 @section('script')
     <script>
         $(document).ready(function(){
-            $('#slider-home').slider({
-                height: 479,
+            $('.slider').slider({
+
             })
         });
 

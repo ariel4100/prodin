@@ -40,7 +40,7 @@ Route::prefix('adm')->group(function (){
 });
 
 
-Route::prefix('adm')->group(function (){
+Route::middleware('auth')->prefix('adm')->group(function (){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/home/informacion', 'HomeController@indexInformacion')->name('home.info');
     Route::get('/home/informacion/{id}/edit', 'HomeController@editInformacion')->name('home.info.edit');

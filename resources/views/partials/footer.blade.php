@@ -1,4 +1,4 @@
-<footer class="page-footer" style="background-color: #063B6B">
+<footer class="page-footer" style="background-color: #063B6B; font-size: 16px">
     <div class="container">
         <div class="row" style="margin-bottom: 10px;">
             <div class="col l4 m12 s12 footer-logo">
@@ -79,10 +79,10 @@
     <div class="container">
         <div class="divider"  ></div>
     </div>
-    <div class="footer-copyright">
+    <div class="footer-copyright" style="font-size: 12px !important;">
         <div class="container">
             © 2019
-            <a class="grey-text text-lighten-4 right" href="osole.es">BY OSOLE</a>
+            <a class="grey-text text-lighten-4 right" href="">BY OSOLE</a>
         </div>
     </div>
 </footer>

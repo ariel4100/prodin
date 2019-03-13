@@ -67,6 +67,14 @@
                             <label for="icon_prefix">Orden</label>
 
                         </div>
+                        <div class="input-field col s6">
+
+                            <label>
+                                <input type="checkbox" name="destacado" />
+                                <span>Destacado(Home)?</span>
+                            </label>
+
+                        </div>
                     </div>
 
                     <div class="right">

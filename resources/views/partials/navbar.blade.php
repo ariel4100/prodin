@@ -9,7 +9,7 @@
             <ul class="hide-on-med-and-down" style="display: flex; justify-content: right; align-items: center; height: 5px;">
                 <a href="https://wa.me/541565280542" target="_blank"> <i class="fab fa-whatsapp fs14" style="font-size: 20px; color: #25d366; line-height: unset; padding-right: 5px"></i>15 6528 - 0542 </a>
                 <a href="tel:+54 11 2062-1307"><i class="material-icons" style="font-size: 20px; float: left; color: #2DC5EE; line-height: unset; padding-right: 5px" >phone_in_talk</i>011 2062 - 1307</a>
-                <a href="mailto:prodin@prodinautamocion.com.ar"><i class="material-icons" style="font-size: 20px; float: left;  line-height: unset; padding-right: 5px; color: #2DC5EE;">mail_outline</i>prodin@prodinautamocion.com.ar</a>
+                <a href="mailto:prodin@prodinautamocion.com.ar"><i class="material-icons" style="font-size: 20px; float: left;  line-height: unset; padding-right: 5px; color: #2DC5EE;">mail_outline</i>prodin@prodinautomacion.com.ar</a>
             </ul>
         </div>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>

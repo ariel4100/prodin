@@ -58,7 +58,9 @@
 		.slider-product .indicators .indicator-item.active {
 			background-color: rgba(181,181,181,1);
 		}
-
+		strong {
+			font-weight: 1000;
+		}
 	</style>
 
 @stop
@@ -85,7 +87,7 @@
 										<li class="active">
 											<div class="collapsible-header" style="     padding: unset;   border-bottom: unset;">
 												<a href="{{ route('show.page', $p->id) }}" class="graysillo"
-												   @isset($producto) @if($p->id == $producto->id) style="color: #2DC5EE; font-size: 16 !important;" @endif @endisset
+												   @isset($producto) @if($p->id == $producto->id) style="color: #2DC5EE; font-size: 16px !important;" @endif @endisset
 												>{{$p->nombre }}</a>
 											</div>
 										</li>
@@ -129,18 +131,18 @@
 						@endif
 						@if($producto->link_mercadolibre != null)
 							<div class="col s12 m6" >
-								<a href="{{ $producto->link_mercadolibre }}" target="_blank"  class="waves-effect waves-light btn z-depth-0" id="estandar-btn" style="background: #FFE600;  border-radius: 0 !important"><img src="{{ asset('images/varios/mercadolibre_btn.png') }}" class="resp onsive-img"></a>
+								<a href="http://{{ $producto->link_mercadolibre }}" target="_blank"  class="waves-effect waves-light btn z-depth-0" id="estandar-btn" style="background: #FFE600;  border-radius: 0 !important"><img src="{{ asset('images/varios/mercadolibre_btn.png') }}" class="resp onsive-img"></a>
 							</div>
 						@endif
 					</div>
 				</div>
 				<div class="row">
-					<div class="col l6 m12 s12">
+					<div class="col l6 m12 s12" style="font-size: 16px; ">
 						{!! $producto->caracteristicas !!}
 					</div>
 					<div class="col l6 m12 s12">
 
-						@if($producto->file_plano != null)
+						@if($producto->file_plano != null || $producto->file_plano == '')
 							<div class="col s12 m12 l9">
 								<div class="row">
 									<p id="productos-show-familia" style="color: #094984 !important;"> Detalles</p>
@@ -151,7 +153,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col l12 m12 s12">
+					<div class="col l12 m12 s12" style="font-size: 16px;>
 						{!! $producto->especificaciones !!}
 					</div>
 				</div>

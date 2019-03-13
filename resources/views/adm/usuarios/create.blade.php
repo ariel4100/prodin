@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">keyboard_arrow_right</i>
-                        <input id="icon_prefix" type="text" class="validate" name="username">
+                        <input id="icon_prefix" type="text" class="validate" name="username" required>
                         <label for="icon_prefix">Username</label>
                     </div>
                     <div class="input-field col s6">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">keyboard_arrow_right</i>
-                        <input id="icon_prefix" type="password" class="validate" name="password">
+                        <input id="icon_prefix" type="password" class="validate" name="password" required>
                         <label for="icon_prefix">Contraseña</label>
                     </div>
                     <div class="input-field col s6">

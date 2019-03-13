@@ -7,13 +7,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Administrador Prodin Automacion</title>
     <!-- Styles -->
     <link rel="stylesheet" href=" {{ asset('css/materialize.css')}} ">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link href="{{ asset('css/admin/app.css') }}" rel="stylesheet">
     <link href="{{ asset('icons/fontawesome/css/all.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+
     @yield('style')
 </head>
 <body>
@@ -35,6 +38,9 @@
     <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{asset('js/materialize.min.js')}}"></script>
     <script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.1/js/i18n/es.js"></script>
     @yield('script')
     <script>
 

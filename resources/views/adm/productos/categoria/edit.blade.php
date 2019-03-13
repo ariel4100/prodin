@@ -46,7 +46,14 @@
                         <input id="icon_prefix" type="text" class="validate" name="orden"   value="{{$familia->orden}}" >
                         <label for="icon_prefix">Orden</label>
                     </div>
+                    <div class="input-field col s6">
 
+                        <label>
+                            <input type="checkbox" name="destacado" />
+                            <span>Destacado(Home)?</span>
+                        </label>
+
+                    </div>
 
                     <div class="right">
                         <a href="{{ action('CategoriaController@index') }}" class="waves-effect waves-light btn btn-color">Cancelar</a>
